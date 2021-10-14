@@ -13,8 +13,7 @@ int check_compiler()
     return 1;
 }
 
-int Strat_print()
-
+int Start_print()
 {
     // Printing OS info
     char os_name[20];

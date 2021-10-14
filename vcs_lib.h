@@ -1,7 +1,7 @@
 int vcs_osname()
 {
     // not detected = 0, windows = 1, linux = 2;
-    return osname;
+    return 2;
 }
 
 int check_compiler()

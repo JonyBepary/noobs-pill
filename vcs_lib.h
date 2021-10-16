@@ -12,6 +12,17 @@ int check_compiler()
     // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
     return 1;
 }
+int check_vscode()
+{
+    //1 for vscode is installed and 0 for vscode not installed
+    return 1;
+}
+int check_os_architechture()
+{
+    // 0 for x86, 1 for x64 , 3 for AArch32
+    // and 4 for AArch64
+    return 1;
+}
 
 int Start_print()
 {

@@ -42,8 +42,8 @@ int Start_print()
         strcpy(os_name, "Unable to detected");
     }
     printf("OS: %s\n", os_name);
-    // Printing Compiler info
 
+    // Printing Compiler info
     char compiler_name[30];
     int compiler_code = check_compiler();
     if (compiler_code == 1)
@@ -56,12 +56,12 @@ int Start_print()
     }
     else if (compiler_code == 3)
     {
-        strcpy(compiler_name, "mcc"); //
+        strcpy(compiler_name, "mcc");
     }
     else if (compiler_code == 0)
     {
-        strcpy(compiler_name, "Unable to be detected"); // Name formatting korte hobe
+        strcpy(compiler_name, "Unable to be detected");
     }
-    printf("Compiler: %s\n", compiler_name); //
+    printf("Compiler: %s\n", compiler_name);
     return 0;
 }

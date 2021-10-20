@@ -23,7 +23,10 @@ int check_os_architechture()
     // and 4 for AArch64
     return 1;
 }
-
+int User_command()
+{
+    return 1;
+}
 int Start_print()
 {
     // Printing OS info

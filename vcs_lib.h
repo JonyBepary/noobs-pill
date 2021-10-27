@@ -3,8 +3,14 @@
 
 int vcs_osname()
 {
-    // not detected = 0, windows = 1, linux = 2;
-    return 2;
+#ifdef _WIN32
+    return 1; // windows
+#elif __linux__
+    return 2; //linux
+#else
+    return 0; //other
+#endif
+    return -1;
 }
 
 int check_compiler()

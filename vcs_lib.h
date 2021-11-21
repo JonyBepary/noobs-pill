@@ -1,17 +1,28 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-int vcs_osname()
-{
+#include <sys/stat.h>
+#include <stdbool.h>
+
 #ifdef _WIN32
-    return 1; // windows
-#elif __linux__
-    return 2; //linux
-#else
-    return 0; //other
+#include "vcs_win.h"
 #endif
-    return -1;
-}
+
+#ifdef __linux__
+#include "vcs_linux.h"
+#endif
+
+#ifdef __i386__
+#define OS_architechture 1
+#elif __x86_64__
+#define OS_architechture 2
+#elif __aarch64__
+#define OS_architechture 4
+#elif __arm__
+#define OS_architechture 3
+// do arm stuff
+#endif
 
 int check_compiler()
 {
@@ -37,16 +48,16 @@ int Start_print()
 {
     // Printing OS info
     char os_name[20];
-    int os_code = vcs_osname();
-    if (os_code == 1)
+    // int vcs_osname = vcs_osname;
+    if (vcs_osname == 1)
     {
         strcpy(os_name, "Windows");
     }
-    else if (os_code == 2)
+    else if (vcs_osname == 2)
     {
         strcpy(os_name, "Linux");
     }
-    else if (os_code == 0)
+    else if (vcs_osname == 0)
     {
         strcpy(os_name, "Unable to detected");
     }

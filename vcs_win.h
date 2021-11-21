@@ -5,7 +5,7 @@
 
 int Download_Wget()
 {
-    const char url[1000] = "https://eternallybored.org/misc/wget/1.21.2/64/wget.exe";
+    const char *url = "https://eternallybored.org/misc/wget/1.21.2/64/wget.exe";
     const char *fdir = "wget.exe";
     if (S_OK == URLDownloadToFile(NULL, url, fdir, 0, NULL))
     {

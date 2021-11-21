@@ -14,3 +14,13 @@ int Download_Wget()
     }
     return 0;
 }
+
+int Download_LIST_Through_wget()
+{
+
+    if (system(".\\wget.exe --content-disposition -i .\\DL_LIST_WIN") == 0)
+    {
+        printf("Download Success!!!\n");
+        /* code */
+    }
+}

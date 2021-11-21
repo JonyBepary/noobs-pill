@@ -34,12 +34,7 @@ int check_vscode()
     // 1 for vscode is installed and 0 for vscode not installed
     return 1;
 }
-int check_os_architechture()
-{
-    // 0 for x86, 1 for x64 , 3 for AArch32
-    // and 4 for AArch64
-    return 1;
-}
+
 int User_command()
 {
     return 1;
@@ -83,5 +78,26 @@ int Start_print()
         strcpy(compiler_name, "Unable to be detected");
     }
     printf("Compiler: %s\n", compiler_name);
+    // OS_architechture: 1 for x86, 2 for x64 , 3 for AArch32
+    //  and 4 for AArch64
+    printf("OS Archtitechture: ");
+    switch (OS_architechture)
+    {
+    case 1:
+        printf("x86\n");
+        break;
+    case 2:
+        printf("x64\n");
+        break;
+    case 3:
+        printf("AArch32\n");
+        break;
+    case 4:
+        printf("AArch64\n");
+        break;
+    default:
+        printf("Undefined\n");
+        break;
+    }
     return 0;
 }

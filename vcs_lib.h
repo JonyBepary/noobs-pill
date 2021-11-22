@@ -75,7 +75,6 @@ int Start_print()
         printf("Undefined\n");
         break;
     }
-    check_compiler();
     for (size_t i = 0; i < 4; i++)
     {
         if (c_compiler[i] == 1)
@@ -87,6 +86,12 @@ int Start_print()
     {
         printf("Visual studio code installed\n");
     }
+    else
+    {
+        printf("Visual studio code not installed!\n");
+        /* code */
+    }
+
     if (check_config() == -1)
     {
         printf("Config not found!\n");

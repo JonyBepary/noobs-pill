@@ -4,7 +4,7 @@
 
 void clear_screen()
 {
-    system("cls");
+    system("clear");
 }
 
 int Download_LIST_Through_wget()

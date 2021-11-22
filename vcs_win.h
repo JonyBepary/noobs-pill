@@ -3,6 +3,11 @@
 #include <Urlmon.h>
 #define vcs_osname 1
 
+void clear_screen(){
+    system("cls");
+}
+
+
 int Download_Wget()
 {
     const char *url = "https://eternallybored.org/misc/wget/1.21.2/64/wget.exe";

@@ -1,10 +1,23 @@
 
-#define vcs_osname 2
 #include <unistd.h>
+#define vcs_osname 2
+
+// For listing of C Compiler
+// 1. gcc
+// 2. clang
+// 3. mcc
+int c_compiler[4] = {0};
+char c_compiler_name[4][30];
+int vscode_editor = 0;
 
 void clear_screen()
 {
     system("clear");
+    system("clear");
+}
+
+void construct_download_list()
+{
 }
 
 int Download_LIST_Through_wget()
@@ -21,5 +34,59 @@ int Download_LIST_Through_wget()
         return -1;
     }
 }
+void print_os_name()
+{
 
+    system("echo -n \"OS: \"");
+    system("lsb_release -ds");
+}
+
+void check_compiler()
+{
+    // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
+    if (system("gcc -v >/dev/null 2>/dev/null") == 0)
+    {
+
+        strcpy(c_compiler_name[0], "Gnu C Compiler");
+        c_compiler[0] = 1;
+    }
+    if (system("clang -v >/dev/null 2>/dev/null") == 0)
+    {
+
+        strcpy(c_compiler_name[1], "Clang C Compiler");
+        c_compiler[1] = 1;
+    }
+    if (system("mcc -v >/dev/null 2>/dev/null") == 0)
+    {
+
+        strcpy(c_compiler_name[2], "Microsoft C Compiler");
+        c_compiler[2] = 1;
+    }
+    if (system("icc -v >/dev/null 2>/dev/null") == 0)
+    {
+
+        strcpy(c_compiler_name[3], "Intel C Compiler");
+        c_compiler[3] = 1;
+    }
+}
+void check_vscode()
+{
+    if (system("code -v >/dev/null 2>/dev/null") == 0)
+    {
+        vscode_editor = 1;
+    }
+}
+
+int check_config()
+{
+    // if (access(fname, F_OK) == 0)
+    // {
+    //     // file exists
+    // }
+    // else
+    // {
+    //     // file doesn't exist
+    // }
+    return -1;
+}
 // Added Latest Download links for Windows Packages

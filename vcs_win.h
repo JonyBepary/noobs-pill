@@ -3,10 +3,18 @@
 #include <Urlmon.h>
 #define vcs_osname 1
 
-void clear_screen(){
+// For listing of C Compiler
+// 1. gcc
+// 2. clang
+// 3. mcc
+int c_compiler[4] = {0};
+char c_compiler_name[4][30];
+int vscode_editor = 0;
+
+void clear_screen()
+{
     system("cls");
 }
-
 
 int Download_Wget()
 {
@@ -28,4 +36,44 @@ int Download_LIST_Through_wget()
         printf("Download Success!!!\n");
         /* code */
     }
+}
+
+void check_compiler()
+{
+    // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
+    if (system("gcc -v > nul") == 0)
+    {
+
+        strcpy(c_compiler_name[0], "Gnu C Compiler");
+        c_compiler[0] = 1;
+    }
+    if (system("clang -v > nul") == 0)
+    {
+
+        strcpy(c_compiler_name[1], "clang");
+        c_compiler[1] = 1;
+    }
+    if (system("mcc -v > nul") == 0)
+    {
+
+        strcpy(c_compiler_name[2], "Microsoft C Compiler");
+        c_compiler[2] = 1;
+    }
+    if (system("icc -v > nul") == 0)
+    {
+
+        strcpy(c_compiler_name[3], "Intel C Compiler");
+        c_compiler[3] = 1;
+    }
+}
+void check_vscode()
+{
+    if (system("code -v > nul") == 0)
+    {
+        vscode_editor = 1;
+    }
+}
+int check_config()
+{
+    return -1;
 }

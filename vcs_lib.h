@@ -37,20 +37,6 @@ int User_command()
 int Start_print()
 {
     // Printing OS info
-    char os_name[20];
-    // int vcs_osname = vcs_osname;
-    if (vcs_osname == 1)
-    {
-        strcpy(os_name, "Windows");
-    }
-    else if (vcs_osname == 2)
-    {
-        strcpy(os_name, "Linux");
-    }
-    else if (vcs_osname == 0)
-    {
-        strcpy(os_name, "Unable to detected");
-    }
     print_os_name();
     // Printing Compiler info
     char compiler_name[30];
@@ -75,6 +61,8 @@ int Start_print()
         printf("Undefined\n");
         break;
     }
+
+    //printing  all installed c compiler
     for (size_t i = 0; i < 4; i++)
     {
         if (c_compiler[i] == 1)
@@ -82,6 +70,8 @@ int Start_print()
             printf("%s Installed\n", c_compiler_name[i]);
         }
     }
+
+    
     if (vscode_editor == 1)
     {
         printf("Visual studio code installed\n");

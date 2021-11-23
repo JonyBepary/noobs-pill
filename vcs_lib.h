@@ -85,7 +85,7 @@ void check_command()
 void check_exec()
 {
     printf("=====================================\n");
-    printf("            Task list\n");
+    printf("            Task list               \n");
     printf("=====================================\n");
     if (c_compiler[0] == 0)
     {

@@ -16,7 +16,7 @@ int main()
     // construct_download_list();
     print_option();
     printf("  :");
-    getchar();
+    check_command();
     // printf("%s", OS_CODE);
 
     // Download_LIST_Through_wget();

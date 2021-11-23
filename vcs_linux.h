@@ -9,15 +9,66 @@
 int c_compiler[4] = {0};
 char c_compiler_name[4][30];
 int vscode_editor = 0;
+int codeblocks = 1;
+int wget_av = 0;
+char OS_CODE[4096];
+
+// void createDownload_link(){
+//     if (OS_CODE == "Debian")
+//     {
+//         pri
+//     }
+
+// }
+
+void check_oscode()
+{
+    FILE *fp;
+
+    /* Open the  command for reading OSCODE. */
+    fp = popen("lsb_release -is", "r");
+    if (fp == NULL)
+    {
+        printf("Failed to run command\n");
+        exit(1);
+    }
+
+    // Read the output a line at a time - output it
+    fgets(OS_CODE, sizeof(OS_CODE), fp);
+    /* close */
+    pclose(fp);
+}
 
 void clear_screen()
 {
-    system("clear");
     system("clear");
 }
 
 void construct_download_list()
 {
+    FILE *fp;
+    fp = fopen("./DL_LIST_NIX", "a+");
+    if (fp == NULL)
+    {
+        printf("Could not open file");
+    }
+    if (strcmp(OS_CODE, "Debian"))
+    {
+
+        if (vscode_editor == 0)
+            fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64");
+
+        fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
+    }
+    if (strcmp(OS_CODE, "Manjaro"))
+    {
+        if (vscode_editor == 0)
+            fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64");
+
+        if (codeblocks == 0)
+            fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
+    }
+    fclose(fp);
 }
 
 int Download_LIST_Through_wget()
@@ -36,7 +87,8 @@ int Download_LIST_Through_wget()
 }
 void print_os_name()
 {
-
+    system("echo -n [");
+    system("echo -n \"\\033[0;32m✓\\033[0m] \"");
     system("echo -n \"OS: \"");
     system("lsb_release -ds");
 }
@@ -74,6 +126,14 @@ void check_vscode()
     if (system("code -v >/dev/null 2>/dev/null") == 0)
     {
         vscode_editor = 1;
+    }
+}
+
+void check_wget()
+{
+    if (system("wget -V >/dev/null 2>/dev/null") == 0)
+    {
+        wget_av = 1;
     }
 }
 

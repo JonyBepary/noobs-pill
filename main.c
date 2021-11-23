@@ -6,6 +6,7 @@ int main(int argc, char const *argv[])
 
     calibrate();
     clear_screen();
+    
     print_system_info();
     // show_command();
     // if (wget_av == 0)

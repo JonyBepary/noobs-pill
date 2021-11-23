@@ -72,10 +72,10 @@ int print_option()
     return 1;
 }
 
-void check_exec()
+int check_exec()
 {
     printf("=====================================\n");
-    printf("            Task list               \n");
+    printf("            Task list                \n");
     printf("=====================================\n");
     if (c_compiler[0] == 0)
     {
@@ -91,6 +91,21 @@ void check_exec()
     {
         print_cross();
         printf("Codeblocks IDE\n");
+    }
+    char cmd_command;
+    printf("\033[0;33m"); //
+    printf("\n\t\t\tE "); //
+    printf("\033[0;0m");  //
+    printf("exit");       //
+    printf("\n");
+
+    printf("  : "); //
+    getchar();
+    scanf("%c", &cmd_command);
+    printf("\n"); //
+    if (cmd_command == 'e' || cmd_command == 'E')
+    {
+        return -1;
     }
 }
 int print_system_info()
@@ -173,6 +188,7 @@ int print_system_info()
 
     // print_cross();
     // print_sign();
+
     return 0;
 }
 void check_command()
@@ -184,4 +200,13 @@ void check_command()
         clear_screen();
         check_exec();
     }
+}
+
+void start_ui()
+{
+    clear_screen();
+    print_system_info();
+    print_option();
+    printf("  :");
+    check_command();
 }

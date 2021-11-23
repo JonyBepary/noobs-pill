@@ -5,8 +5,13 @@ int main()
 {
 
     calibrate();
-    clear_screen();
-    print_system_info();
+    start_ui();
+
+    /* code */
+
+    // calibrate();
+    // clear_screen();
+    // print_system_info();
 
     // if (wget_av == 0)
     // {
@@ -14,10 +19,10 @@ int main()
     // Download_LIST_Through_wget();
     // check_oscode();
     // construct_download_list();
+    // print_option();
+    // printf("  :");
+    // check_command();
 
-    print_option();
-    printf("  :");
-    check_command();
     // printf("%s", OS_CODE);
 
     // Download_LIST_Through_wget();

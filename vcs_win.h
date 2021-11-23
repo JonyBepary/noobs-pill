@@ -9,10 +9,14 @@
 // 3. mcc
 int c_compiler[4] = {0};
 char c_compiler_name[4][30];
+
 int vscode_editor = 0;
+int wget_av = 0;
+char OS_CODE[4096] = "Windows";
 
 void clear_screen()
 {
+
     system("cls");
 }
 
@@ -73,6 +77,14 @@ void check_vscode()
         vscode_editor = 1;
     }
 }
+void check_wget()
+{
+    if (system("wget -V > nul") == 0)
+    {
+        wget_av = 1;
+    }
+}
+
 int check_config()
 {
     return -1;

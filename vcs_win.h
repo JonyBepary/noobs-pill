@@ -14,6 +14,11 @@ int vscode_editor = 0;
 int wget_av = 0;
 char OS_CODE[4096] = "Windows";
 
+void printbaner()
+{
+    system("lolcat art");
+}
+
 void clear_screen()
 {
 

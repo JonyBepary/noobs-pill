@@ -108,7 +108,10 @@ void print_os_name()
     printf("%s", OS_INFO);
     fclose(fp);
 }
-
+void printbaner()
+{
+    system("./lolcat art");
+}
 void check_compiler()
 {
     // no_comiler = 0, gcc = 1, clang = 2, mcc = 3

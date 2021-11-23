@@ -52,11 +52,16 @@ int User_command()
 }
 int print_system_info()
 {
-    printf("==========================================\n");
-    printf("             NOOBS PILL                       \n");
-    printf("==========================================\n");
-    // Printing OS info
+    // printf("==========================================\n");
+    // // printf("             NOOBS PILL                       \n");
+    // printf("             NOOBS ");
+    // printf("\033[0;35m"); // Set the text to the color red
+    // printf("PILL                       \n");
+    // printf("\033[0;0m"); // Set the text to the color red
 
+    // printf("==========================================\n");
+    // // Printing OS info
+    printbaner();
     print_sign();
     print_os_name();
     // Printing Compiler info

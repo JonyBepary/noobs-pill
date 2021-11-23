@@ -32,22 +32,41 @@ void calibrate()
 }
 void print_sign()
 {
-    printf("  [");        // Display Hello in red
-    printf("\033[0;32m"); // Set the text to the color red
-    printf("✓");          // Display Hello in red
-    printf("\033[0;0m");  // Set the text to the color red
-    printf("] ");         // Display Hello in red
+    printf("  [");        //
+    printf("\033[0;32m"); //
+    printf("✓");          //
+    printf("\033[0;0m");  //
+    printf("] ");         //
 }
 void print_cross()
 {
-    printf("  [");        // Display Hello in red
-    printf("\033[0;31m"); // Set the text to the color red
-    printf("x");          // Display Hello in red
-    printf("\033[0;0m");  // Set the text to the color red
-    printf("]");          // Display Hello in red
+    printf("  [");        //
+    printf("\033[0;31m"); //
+    printf("x");          //
+    printf("\033[0;0m");  //
+    printf("]");          //
 }
-int User_command()
+int print_option()
 {
+    printf("\n  ");       //
+    printf("\033[0;33m"); //
+    printf("C ");         //
+    printf("\033[0;0m");  //
+    printf("Check\t");    //
+    printf("\033[0;33m"); //
+    printf("I ");         //
+    printf("\033[0;0m");  //
+    printf("Install\t");  //
+    printf("\033[0;33m"); //
+    printf("S ");         //
+    printf("\033[0;0m");  //
+    printf("Set\t");      //
+    printf("\033[0;33m"); //
+    printf("E ");         //
+    printf("\033[0;0m");  //
+    printf("exit");       //
+    printf("\n");         //
+
     return 1;
 }
 int print_system_info()

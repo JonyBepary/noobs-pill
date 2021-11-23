@@ -24,7 +24,6 @@
 // do arm stuff
 #endif
 
-
 void calibrate()
 {
     check_compiler();
@@ -58,6 +57,7 @@ int print_system_info()
     printf("==========================================\n");
     // Printing OS info
 
+    print_sign();
     print_os_name();
     // Printing Compiler info
     char compiler_name[30];

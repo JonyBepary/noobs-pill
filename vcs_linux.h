@@ -87,10 +87,26 @@ int Download_LIST_Through_wget()
 }
 void print_os_name()
 {
-    system("echo -n [");
-    system("echo -n \"\\033[0;32m✓\\033[0m] \"");
-    system("echo -n \"OS: \"");
-    system("lsb_release -ds");
+    // system("echo -n [");
+    // system("echo -n \"\\033[0;32m✓\\033[0m] \"");
+    // system("echo -n \"OS: \"");
+    // system("lsb_release -ds");
+    FILE *fp;
+
+    /* Open the  command for reading OSCODE. */
+    fp = popen("lsb_release -ds", "r");
+    if (fp == NULL)
+    {
+        printf("\033[0;31m"); // Set the text to the color red
+        printf("Failed to Get os Name\n");
+        printf("\033[0;0m");
+        exit(1);
+    }
+    char OS_INFO[4096];
+    // Read the output a line at a time - output it
+    fgets(OS_INFO, sizeof(OS_INFO), fp);
+    printf("%s", OS_INFO);
+    fclose(fp);
 }
 
 void check_compiler()

@@ -3,9 +3,8 @@
 #define vcs_osname 2
 
 // For listing of C Compiler
-// 1. gcc
-// 2. clang
-// 3. mcc
+// 1. gcc, 2. clang, 3. mcc
+
 int c_compiler[4] = {0};
 char c_compiler_name[4][30];
 int vscode_editor = 0;
@@ -81,16 +80,11 @@ int Download_LIST_Through_wget()
     }
     else
     {
-
         return -1;
     }
 }
 void print_os_name()
 {
-    // system("echo -n [");
-    // system("echo -n \"\\033[0;32m✓\\033[0m] \"");
-    // system("echo -n \"OS: \"");
-    // system("lsb_release -ds");
     FILE *fp;
 
     /* Open the  command for reading OSCODE. */
@@ -103,15 +97,17 @@ void print_os_name()
         exit(1);
     }
     char OS_INFO[4096];
-    // Read the output a line at a time - output it
+
     fgets(OS_INFO, sizeof(OS_INFO), fp);
     printf("%s", OS_INFO);
     fclose(fp);
 }
+
 void printbaner()
 {
     system("./lolcat art");
 }
+
 void check_compiler()
 {
     // no_comiler = 0, gcc = 1, clang = 2, mcc = 3

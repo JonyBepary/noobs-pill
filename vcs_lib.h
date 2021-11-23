@@ -24,6 +24,7 @@
 // do arm stuff
 #endif
 
+char command;
 void calibrate()
 {
     check_compiler();
@@ -69,6 +70,45 @@ int print_option()
 
     return 1;
 }
+
+void check_command()
+{
+    scanf("%c", &command);
+    // printf("~%c\n", command);
+    if (command == 'C' || command == 'c')
+    {
+        clear_screen();
+        check_exec();
+    }
+}
+
+void check_exec()
+{
+    printf("=====================================\n");
+    printf("            Task list\n");
+    printf("=====================================\n");
+    if (c_compiler[0] == 0)
+    {
+        print_cross();
+        printf("%s\n", c_compiler_name[0]);
+    }
+    if (vscode_editor == 0)
+    {
+        print_cross();
+        printf("Visual studio code\n");
+    }
+    if (codeblocks == 0)
+    {
+        print_cross();
+        printf("Codeblock IDE\n");
+    }
+    if (codeblocks == 0)
+    {
+        print_cross();
+        printf("Codeblock IDE\n");
+    }
+}
+
 int print_system_info()
 {
     // printf("==========================================\n");
@@ -85,8 +125,8 @@ int print_system_info()
     print_os_name();
     // Printing Compiler info
     char compiler_name[30];
-    // sys_architechture: 1 for x86, 2 for x64 , 3 for AArch32
-    //  and 4 for AArch64
+    // sys_architechture: 1 for x86, 2 for x64 , 3 for AArch32 and 4 for AArch64
+
     print_sign();
     printf("System Archtitechture: ");
     switch (sys_architechture)
@@ -108,6 +148,11 @@ int print_system_info()
         break;
     }
 
+    if (c_compiler[0] == 0)
+    {
+        print_cross();
+        printf("GNU C Compiler not installed!\n");
+    }
     // printing  all installed c compiler
     for (size_t i = 0; i < 4; i++)
     {

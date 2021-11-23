@@ -8,7 +8,7 @@
 int c_compiler[4] = {0};
 char c_compiler_name[4][30];
 int vscode_editor = 0;
-int codeblocks = 1;
+int codeblocks = 0;
 int wget_av = 0;
 char OS_CODE[4096];
 
@@ -57,7 +57,8 @@ void construct_download_list()
         if (vscode_editor == 0)
             fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64");
 
-        fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
+        if (codeblocks == 0)
+            fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
     }
     if (strcmp(OS_CODE, "Manjaro"))
     {
@@ -142,6 +143,40 @@ void check_vscode()
     {
         vscode_editor = 1;
     }
+}
+void check_codeblocks()
+{
+    FILE *fp;
+    /* Open the  command for reading OSCODE. */
+    fp = popen("which /bin/codeblocks", "r");
+    if (fp == NULL)
+    {
+        printf("Failed to run command\n");
+        exit(1);
+    }
+    // Read the output a line at a time - output it
+    fgets(OS_CODE, sizeof(OS_CODE), fp);
+    /* close */
+    if (strcmp(OS_CODE, "/bin/codeblocks\n") == 0)
+    {
+        FILE *fp;
+        /* Open the  command for reading OSCODE. */
+        fp = popen("which /bin/codeblocks", "r");
+        if (fp == NULL)
+        {
+            printf("Failed to run command\n");
+            exit(1);
+        }
+        // Read the output a line at a time - output it
+        fgets(OS_CODE, sizeof(OS_CODE), fp);
+        /* close */
+        if (strcmp(OS_CODE, "/bin/codeblocks\n") == 0)
+        {
+            codeblocks = 1;
+        }
+        fclose(fp);
+    }
+    fclose(fp);
 }
 
 void check_wget()

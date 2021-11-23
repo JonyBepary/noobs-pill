@@ -29,6 +29,7 @@ void calibrate()
 {
     check_compiler();
     check_vscode();
+    check_codeblocks();
     check_wget();
 }
 void print_sign()
@@ -71,17 +72,6 @@ int print_option()
     return 1;
 }
 
-void check_command()
-{
-    scanf("%c", &command);
-    // printf("~%c\n", command);
-    if (command == 'C' || command == 'c')
-    {
-        clear_screen();
-        check_exec();
-    }
-}
-
 void check_exec()
 {
     printf("=====================================\n");
@@ -100,15 +90,9 @@ void check_exec()
     if (codeblocks == 0)
     {
         print_cross();
-        printf("Codeblock IDE\n");
-    }
-    if (codeblocks == 0)
-    {
-        print_cross();
-        printf("Codeblock IDE\n");
+        printf("Codeblocks IDE\n");
     }
 }
-
 int print_system_info()
 {
     // printf("==========================================\n");
@@ -190,4 +174,14 @@ int print_system_info()
     // print_cross();
     // print_sign();
     return 0;
+}
+void check_command()
+{
+    scanf("%c", &command);
+    // printf("~%c\n", command);
+    if (command == 'C' || command == 'c')
+    {
+        clear_screen();
+        check_exec();
+    }
 }

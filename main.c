@@ -6,7 +6,7 @@ int main(int argc, char const *argv[])
 
     calibrate();
     clear_screen();
-    
+
     print_system_info();
     // show_command();
     // if (wget_av == 0)
@@ -15,6 +15,8 @@ int main(int argc, char const *argv[])
     // // Download_LIST_Through_wget();
     check_oscode();
     construct_download_list();
+    printf("  :");
+    getchar();
     // printf("%s", OS_CODE);
 
     // Download_LIST_Through_wget();

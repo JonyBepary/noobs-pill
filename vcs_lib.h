@@ -32,7 +32,7 @@ void calibrate()
 }
 void print_sign()
 {
-    printf("[");          // Display Hello in red
+    printf("  [");        // Display Hello in red
     printf("\033[0;32m"); // Set the text to the color red
     printf("✓");          // Display Hello in red
     printf("\033[0;0m");  // Set the text to the color red
@@ -40,7 +40,7 @@ void print_sign()
 }
 void print_cross()
 {
-    printf("[");          // Display Hello in red
+    printf("  [");        // Display Hello in red
     printf("\033[0;31m"); // Set the text to the color red
     printf("x");          // Display Hello in red
     printf("\033[0;0m");  // Set the text to the color red

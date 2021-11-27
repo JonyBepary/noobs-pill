@@ -1,1 +1,1 @@
-# vcs
+# noob's pill

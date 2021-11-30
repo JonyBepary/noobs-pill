@@ -10,6 +10,10 @@ char c_compiler_name[4][30];
 int vscode_editor = 0;
 int codeblocks = 0;
 int wget_av = 0;
+int vscode_editor_download_ok = 0;
+int codeblocks__download_ok = 0;
+int wget_av_download_ok = 0;
+
 char OS_CODE[4096];
 
 // void createDownload_link(){
@@ -56,9 +60,6 @@ void construct_download_list()
 
         if (vscode_editor == 0)
             fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64");
-
-        if (codeblocks == 0)
-            fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
     }
     if (strcmp(OS_CODE, "Manjaro"))
     {
@@ -74,7 +75,7 @@ void construct_download_list()
 int Download_LIST_Through_wget()
 {
 
-    if (system("wget --content-disposition -i ./DL_LIST_NIX") == 0)
+    if (system("wget  --content-disposition --directory-prefix=./packages -i ./DL_LIST_NIX") == 0)
     {
         printf("Download Success!!!\n");
         return 0;
@@ -84,6 +85,17 @@ int Download_LIST_Through_wget()
         return -1;
     }
 }
+
+void app_exec()
+{
+    printf("Installing required program\n");
+    if (strcmp(OS_CODE, "Debian") && codeblocks)
+    {
+        system("sudo apt update && sudo apt install codeblocks");
+        codeblocks = 1;
+    }
+}
+
 void print_os_name()
 {
     FILE *fp;

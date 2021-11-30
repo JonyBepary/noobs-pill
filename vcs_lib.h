@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ncurses.h>
 
-#include <sys/stat.h>
+// #include <sys/stat.h>
 #include <stdbool.h>
+// #include <ncurses.h>
 
 #ifdef _WIN32
 #include "vcs_win.h"
@@ -46,8 +48,17 @@ void print_cross()
     printf("\033[0;31m"); //
     printf("x");          //
     printf("\033[0;0m");  //
-    printf("]");          //
+    printf("] ");         //
 }
+void print_star()
+{
+    printf("  [");        //
+    printf("\033[0;34m"); //
+    printf("*");          //
+    printf("\033[0;0m");  //
+    printf("] ");         //
+}
+
 int print_option()
 {
     printf("\n  ");       //
@@ -74,9 +85,6 @@ int print_option()
 
 int check_exec()
 {
-    printf("=====================================\n");
-    printf("            Task list                \n");
-    printf("=====================================\n");
     if (c_compiler[0] == 0)
     {
         print_cross();
@@ -120,14 +128,17 @@ int print_system_info()
     // printf("==========================================\n");
     // // Printing OS info
     printbaner();
-    print_sign();
+    print_star();
+
+    printf("USER: %s\n", getlogin());
+    print_star();
+    printf("OS: ");
     print_os_name();
     // Printing Compiler info
     char compiler_name[30];
     // sys_architechture: 1 for x86, 2 for x64 , 3 for AArch32 and 4 for AArch64
-
-    print_sign();
-    printf("System Archtitechture: ");
+    print_star();
+    printf("Arch: ");
     switch (sys_architechture)
     {
     case 1:
@@ -137,76 +148,127 @@ int print_system_info()
         printf("x64\n");
         break;
     case 3:
-        printf("AArch32\n");
+        printf("Arm32\n");
         break;
     case 4:
-        printf("AArch64\n");
+        printf("Arm64\n");
         break;
     default:
         printf("Undefined\n");
         break;
     }
+    if (system("timeout 0.5 ping -c1 -s1 www.google.com >/dev/null 2>/dev/null"))
+    {
+        print_cross();
+        printf("There is no internet connection\n");
+    }
+    else
+    {
+        print_sign();
+        printf("Internet connection is Working\n");
+    }
+
+    return 0;
+    // print_sign();
+    // print_cross();
+
+    return 0;
+}
+void check_component()
+{
+
+    initscr();
+    curs_set(0);
+    start_color();
+
+    printw("\n");
+
+    printw("=======================================\n");
+
+    printw("              Task list                \n");
+
+    printw("=======================================\n");
 
     if (c_compiler[0] == 0)
     {
-        print_cross();
-        printf("GNU C Compiler not installed!\n");
+        // init_pair(1, COLOR_, -1);
+
+        printw("  [x] GNU C Compiler not installed!\n");
     }
     // printing  all installed c compiler
     for (size_t i = 0; i < 4; i++)
     {
         if (c_compiler[i] == 1)
         {
-            print_sign();
-            printf("%s Installed\n", c_compiler_name[i]);
+
+            printw("  [*] %s Installed\n", c_compiler_name[i]);
         }
     }
 
-    // print_sign();
     if (vscode_editor == 1)
     {
-        print_sign();
-        printf("Visual studio code installed\n");
+
+        printw("  [*] Visual studio code installed\n");
     }
     else
     {
-        print_cross();
-        printf("Visual studio code not installed!\n");
+
+        printw("  [x] Visual studio code not installed!\n");
     }
 
     if (check_config() == -1)
     {
-        print_cross();
-        printf("System is not configured!\n");
+
+        printw("  [x] System is not configured!\n");
         /* code */
     }
     else
     {
-        print_sign();
-        printf("System configured!\n");
+
+        printw("  [*] System configured!\n");
     }
-
-    // print_cross();
-    // print_sign();
-
-    return 0;
+    refresh();
+    getch();
+    endwin(); /* End curses mode		  */
 }
 void check_command()
 {
-    scanf("%c", &command);
+    command = getchar();
+    // getchar();
+    // scanf("%c", &command);
     // printf("~%c\n", command);
     if (command == 'C' || command == 'c')
     {
-        clear_screen();
-        check_exec();
+        // clear_screen();
+        // check_exec();
+        check_component();
     }
+    if (command == 'I' || command == 'i')
+    {
+        if (strcmp(OS_CODE, "Debian"))
+        {
+            Download_LIST_Through_wget();
+            app_exec();
+        }
+    }
+}
+
+
+void vscode_plugin_exec()
+{
+    printf("Installing required plugin for vscode\n");
+}
+void config_exec()
+{
+    printf("Configuring vscode\n");
 }
 
 void start_ui()
 {
+
     clear_screen();
     print_system_info();
     print_option();
-    printf("  :");
+    // initscr(); /* Start curses mode 		  */
     check_command();
 }

@@ -5,7 +5,9 @@ int main()
 {
 
     calibrate();
-    start_ui();
+    construct_download_list();
+    app_exec();
+    // start_ui();
 
     /* code */
 

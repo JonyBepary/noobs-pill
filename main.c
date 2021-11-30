@@ -7,7 +7,10 @@ int main()
     // system e various program like compiler vscode, codeblodck
     // install ache kina check kore acorrding to the result
     // variable gula mark kore.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0756e97fdca89c18a442e6f83046816051c47235
     calibrate();
     // marked variable gula theke  FILE/IO use kore
     // downlond link construct kore

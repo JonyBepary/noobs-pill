@@ -291,5 +291,10 @@ int start_ui()
     // info like user, os, architecture, and internet
     print_system_info();
     print_option();
+<<<<<<< HEAD
+=======
+
+    check_command();
+>>>>>>> 0756e97fdca89c18a442e6f83046816051c47235
     return 0;
 }

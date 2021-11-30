@@ -128,6 +128,10 @@ void printbaner()
     system("./lolcat art");
 }
 
+void printbaner2()
+{
+    system("./lolcat art2");
+}
 void check_compiler()
 {
     // no_comiler = 0, gcc = 1, clang = 2, mcc = 3

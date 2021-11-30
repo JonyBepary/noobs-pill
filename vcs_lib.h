@@ -127,7 +127,6 @@ int print_system_info()
 
     // printf("==========================================\n");
     // // Printing OS info
-    printbaner();
     print_star();
 
     printf("USER: %s\n", getlogin());
@@ -236,7 +235,7 @@ void check_component()
     getch();
     endwin(); /* End curses mode		  */
 }
-void check_command()
+int check_command()
 {
     command = getchar();
     // getchar();
@@ -258,6 +257,15 @@ void check_command()
             config_exec();
         }
     }
+    if (command == 'S' || command == 's')
+    {
+        printf("Still in Devlopment");
+    }
+    if (command == 'E' || command == 'e')
+    {
+        return -1;
+    }
+    return 0;
 }
 
 void vscode_plugin_exec()
@@ -275,13 +283,13 @@ void config_exec()
     printf("Configuring vscode\n");
 }
 
-void start_ui()
+int start_ui()
 {
-
     clear_screen();
+    // PRINTING ./ART THROUGH LOLCAT COLORIZER
+    printbaner();
+    // info like user, os, architecture, and internet
     print_system_info();
     print_option();
-
-    // initscr(); /* Start curses mode 		  */
-    check_command();
+    return 0;
 }

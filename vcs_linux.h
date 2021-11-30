@@ -43,10 +43,10 @@ void check_oscode()
     pclose(fp);
 }
 
-void check_vscode_user_path()
+void set_vscode_user_path()
 {
     strcpy(vscode_user_path, getenv("HOME"));
-    strcat(vscode_user_path, ".config/Code/User/");
+    strcat(vscode_user_path, "/.config/Code/User/");
 }
 
 void clear_screen()

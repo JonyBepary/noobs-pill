@@ -8,11 +8,9 @@ int main()
     // install ache kina check kore acorrding to the result
     // variable gula mark kore.
     calibrate();
-
     // marked variable gula theke  FILE/IO use kore
     // downlond link construct kore
     construct_download_list();
-
     // landing page
     while (1)
     {
@@ -23,6 +21,6 @@ int main()
     }
     clear_screen();
     printbaner2();
-    
+
     return 0;
 }

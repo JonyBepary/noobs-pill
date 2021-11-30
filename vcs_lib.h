@@ -31,6 +31,7 @@ void calibrate()
 {
     check_compiler();
     check_vscode();
+    set_vscode_user_path();
     check_codeblocks();
     check_wget();
 }
@@ -274,6 +275,11 @@ void vscode_plugin_exec()
 void config_exec()
 {
     printf("Configuring vscode\n");
+    char cmd[4096];
+    strcpy(cmd, "cp -vf ./packages/settings.json ");
+
+    strcat(cmd, vscode_user_path);
+    // system()
 }
 
 int start_ui()

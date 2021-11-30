@@ -3,11 +3,18 @@
 
 int main()
 {
-
+    int i;
+    // system e various program like compiler vscode, codeblodck
+    // install ache kina check kore acorrding to the result
+    // variable gula mark kore.
     calibrate();
+    // marked variable gula theke  FILE/IO use kore
+    // downlond link construct kore
     construct_download_list();
-    app_exec();
-    // start_ui();
+    // landing page
+    start_ui();
+
+    // print_option();
 
     /* code */
 

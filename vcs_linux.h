@@ -1,5 +1,9 @@
-
+// unistd provide linux os related function
+// here used for getlogin() function
 #include <unistd.h>
+
+// since it's a linux  system
+// vcs_osname has been set 2
 #define vcs_osname 2
 
 // For listing of C Compiler
@@ -14,15 +18,12 @@ int vscode_editor_download_ok = 0;
 int codeblocks__download_ok = 0;
 int wget_av_download_ok = 0;
 
+// OS_CODE set from check_oscode() function
+// and store Distro name and version
 char OS_CODE[4096];
 
-// void createDownload_link(){
-//     if (OS_CODE == "Debian")
-//     {
-//         pri
-//     }
-
-// }
+// OS_CODE set from check_oscode() function
+char vscode_user_path[4096];
 
 void check_oscode()
 {
@@ -40,6 +41,12 @@ void check_oscode()
     fgets(OS_CODE, sizeof(OS_CODE), fp);
     /* close */
     pclose(fp);
+}
+
+void check_vscode_user_path()
+{
+    strcpy(vscode_user_path, getenv("HOME"));
+    strcat(vscode_user_path, ".config/Code/User/");
 }
 
 void clear_screen()
@@ -125,12 +132,16 @@ void print_os_name()
 
 void printbaner()
 {
-    system("./lolcat art");
+    system("./lolcat -r ./script/art");
 }
 
 void printbaner2()
 {
-    system("./lolcat art2");
+    system("./lolcat -r ./script/art2");
+}
+void printbaner3()
+{
+    system("./lolcat -r ./script/art3");
 }
 void check_compiler()
 {

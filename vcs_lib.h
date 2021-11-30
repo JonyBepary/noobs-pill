@@ -176,64 +176,57 @@ int print_system_info()
 void check_component()
 {
 
-    initscr();
-    curs_set(0);
-    start_color();
-
-    printw("\n");
-
-    printw("=======================================\n");
-
-    printw("              Task list                \n");
-
-    printw("=======================================\n");
-
+    clear_screen();
+    printbaner3();
     if (c_compiler[0] == 0)
     {
         // init_pair(1, COLOR_, -1);
 
-        printw("  [x] GNU C Compiler not installed!\n");
+        print_cross();
+        printf("  GNU C Compiler not installed!\n");
     }
     // printing  all installed c compiler
     for (size_t i = 0; i < 4; i++)
     {
         if (c_compiler[i] == 1)
         {
-
-            printw("  [*] %s Installed\n", c_compiler_name[i]);
+            print_sign();
+            printf(" %s Installed\n", c_compiler_name[i]);
         }
     }
 
     if (vscode_editor == 1)
     {
-
-        printw("  [*] Visual studio code installed\n");
+        print_sign();
+        printf(" Visual studio code installed\n");
     }
     else
     {
 
-        printw("  [x] Visual studio code not installed!\n");
+        print_cross();
+        printf("  Visual studio code not installed!\n");
     }
 
     if (check_config() == -1)
     {
 
-        printw("  [x] System is not configured!\n");
+        print_cross();
+        printf(" System is not configured!\n");
         /* code */
     }
     else
     {
-
-        printw("  [*] System configured!\n");
+        print_sign();
+        printf(" System configured!\n");
     }
-    printw("\n");   //
-    printw("  E "); //
-    printw("exit"); //
-    printw("\n");   //
+    printf("\n");   //
+    printf("  E "); //
+    printf("exit"); //
+    printf("\n");   //
 
-    refresh();
-    getch();
-    endwin(); /* End curses mode		  */
+    getchar();
+    getchar();
+    /* End curses mode		  */
 }
 int check_command()
 {
@@ -291,10 +284,5 @@ int start_ui()
     // info like user, os, architecture, and internet
     print_system_info();
     print_option();
-<<<<<<< HEAD
-=======
-
-    check_command();
->>>>>>> 0756e97fdca89c18a442e6f83046816051c47235
     return 0;
 }

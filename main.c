@@ -21,5 +21,8 @@ int main()
             break;
         /* code */
     }
+    clear_screen();
+    printbaner2();
+    
     return 0;
 }

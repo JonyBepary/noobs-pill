@@ -89,11 +89,18 @@ int Download_LIST_Through_wget()
 void app_exec()
 {
     printf("Installing required program\n");
-    if (strcmp(OS_CODE, "Debian") && codeblocks)
+
+    if (strcmp(OS_CODE, "Debian") && vscode_editor == 0)
     {
-        system("sudo apt update && sudo apt install codeblocks");
+        system("sudo sh ./script/debian.sh");
+        vscode_editor = 1;
+    }
+    if (strcmp(OS_CODE, "Debian") && codeblocks == 0)
+    {
+        system("sudo apt install codeblocks");
         codeblocks = 1;
     }
+    printf("All program installed\n");
 }
 
 void print_os_name()
@@ -169,24 +176,9 @@ void check_codeblocks()
     // Read the output a line at a time - output it
     fgets(OS_CODE, sizeof(OS_CODE), fp);
     /* close */
-    if (strcmp(OS_CODE, "/bin/codeblocks\n") == 0)
+    if (strcmp(OS_CODE, "/bin/codeblocks"))
     {
-        FILE *fp;
-        /* Open the  command for reading OSCODE. */
-        fp = popen("which /bin/codeblocks", "r");
-        if (fp == NULL)
-        {
-            printf("Failed to run command\n");
-            exit(1);
-        }
-        // Read the output a line at a time - output it
-        fgets(OS_CODE, sizeof(OS_CODE), fp);
-        /* close */
-        if (strcmp(OS_CODE, "/bin/codeblocks\n") == 0)
-        {
-            codeblocks = 1;
-        }
-        fclose(fp);
+        codeblocks = 1;
     }
     fclose(fp);
 }

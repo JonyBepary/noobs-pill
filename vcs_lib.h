@@ -227,6 +227,11 @@ void check_component()
 
         printw("  [*] System configured!\n");
     }
+    printw("\n");   //
+    printw("  E "); //
+    printw("exit"); //
+    printw("\n");   //
+
     refresh();
     getch();
     endwin(); /* End curses mode		  */
@@ -249,14 +254,21 @@ void check_command()
         {
             Download_LIST_Through_wget();
             app_exec();
+            vscode_plugin_exec();
+            config_exec();
         }
     }
 }
 
-
 void vscode_plugin_exec()
 {
     printf("Installing required plugin for vscode\n");
+    system("code --install-extension formulahendry.code-runner");
+    system("code --install-extension streetsidesoftware.code-spell-checker");
+    system("code --install-extension ms-vscode.cpptools");
+    system("code --install-extension CoenraadS.bracket-pair-colorizer-2");
+    system("code --install-extension Equinusocio.vsc-community-material-theme");
+    system("code --install-extension vscode-icons-team.vscode-icons");
 }
 void config_exec()
 {
@@ -269,6 +281,7 @@ void start_ui()
     clear_screen();
     print_system_info();
     print_option();
+
     // initscr(); /* Start curses mode 		  */
     check_command();
 }

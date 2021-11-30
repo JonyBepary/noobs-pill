@@ -4,10 +4,11 @@
 int main()
 {
 
+    //
     calibrate();
     construct_download_list();
-    app_exec();
-    // start_ui();
+    start_ui();
+    // print_option();
 
     /* code */
 

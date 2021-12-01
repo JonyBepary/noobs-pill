@@ -23,6 +23,7 @@ int wget_av_download_ok = 0;
 char OS_CODE[4096];
 
 // OS_CODE set from check_oscode() function
+// format: /home/{user}/.config/Code/User/
 char vscode_user_path[4096];
 
 void check_oscode()

@@ -1,0 +1,75 @@
+{
+  "scm.defaultViewMode": "tree",
+  "editor.formatOnSave": true,
+  "code-runner.runInTerminal": true,
+  "code-runner.fileDirectoryAsCwd": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.showExecutionMessage": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.editor.enablePreview": false,
+  "files.insertFinalNewline": true,
+  "go.toolsManagement.autoUpdate": true,
+  "go.autocompleteUnimportedPackages": true,
+  "window.closeWhenEmpty": false,
+  "editor.emptySelectionClipboard": false,
+  "editor.dragAndDrop": false,
+  "editor.renderWhitespace": "trailing",
+  "editor.fontSize": 16,
+  "editor.scrollBeyondLastLine": true,
+  "editor.mouseWheelScrollSensitivity": 5,
+  "editor.selectionHighlight": false,
+  "editor.wordWrap": "off",
+  "editor.formatOnPaste": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.snippetSuggestions": "top",
+  "window.openFilesInNewWindow": "off",
+  "window.title": "${activeEditorShort}${separator}${rootName}",
+  "files.trimTrailingWhitespace": true,
+  "bracket-pair-colorizer-2.colors": ["Gold", "Orchid", "LightSkyBlue"],
+  "bracket-pair-colorizer-2.colorMode": "Independent",
+  "bracket-pair-colorizer-2.forceIterationColorCycle": true,
+  "bracket-pair-colorizer-2.showBracketsInGutter": true,
+  "bracket-pair-colorizer-2.activeScopeCSS": [
+    "borderStyle : solid",
+    "borderWidth : 1px",
+    "borderColor : {color}",
+    "opacity: 0.5"
+  ],
+  "bracket-pair-colorizer-2.highlightActiveScope": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "formulahendry.code-runner",
+  },
+  "editor.formatOnSaveMode": "file",
+  "[c]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+
+  "C_Cpp.updateChannel": "Insiders",
+  "files.autoSave": "afterDelay",
+  // "workbench.sideBar.location": "right"
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+
+  "C_Cpp.autocompleteAddParentheses": true,
+  "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+  "dart.flutterSdkPath": "/home/jony/Flutter",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "cmake.configureOnOpen": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": 1
+}

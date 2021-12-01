@@ -1,9 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ncurses.h>
 
-// #include <sys/stat.h>
+#include <sys/stat.h>
 #include <stdbool.h>
 // #include <ncurses.h>
 
@@ -274,12 +273,33 @@ void vscode_plugin_exec()
 }
 void config_exec()
 {
+
     printf("Configuring vscode\n");
+    char tmp[4096];
+    strcpy(tmp, "cat ");
+    strcat(tmp, vscode_user_path);
+    strcat(tmp, "settings.json >/dev/null 2>/dev/null");
+
+    printf("%s\n", tmp);
+    if (system(tmp) == 0)
+    {
+        char tmp2[4096];
+        strcpy(tmp2, "cp -vf ");
+        strcat(tmp2, vscode_user_path);
+        strcat(tmp2, "settings.json");
+        strcat(tmp2, " ");
+        strcat(tmp2, vscode_user_path);
+        strcat(tmp2, "settings.json.bak");
+        system(tmp2);
+    }
     char cmd[4096];
     strcpy(cmd, "cp -vf ./packages/settings.json ");
-
     strcat(cmd, vscode_user_path);
-    // system()
+    if (system(cmd) != 0)
+    {
+        printf();
+        config_failed
+    }
 }
 
 int start_ui()

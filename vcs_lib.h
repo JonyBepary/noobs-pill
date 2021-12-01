@@ -297,8 +297,7 @@ void config_exec()
     strcat(cmd, vscode_user_path);
     if (system(cmd) != 0)
     {
-        printf();
-        config_failed
+        printf("config exec failed");
     }
 }
 

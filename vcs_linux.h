@@ -3,8 +3,8 @@
 #include <unistd.h>
 
 // since it's a linux  system
-// vcs_osname has been set 2
-#define vcs_osname 2
+// osbase has been set 2
+// #define osbase 2
 
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc

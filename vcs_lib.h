@@ -1,11 +1,10 @@
-#include <stdlib.h>
+// input output
 #include <stdio.h>
+//system()
+#include <stdlib.h>
 #include <string.h>
 
-#include <sys/stat.h>
-#include <stdbool.h>
-// #include <ncurses.h>
-
+// if it's
 #ifdef _WIN32
 #include "vcs_win.h"
 #endif
@@ -28,28 +27,41 @@
 char command;
 void calibrate()
 {
+    //koyta compiler installed ache ta ache check kora
     check_compiler();
+    //vscode installed ache kina ta check kora
     check_vscode();
+    // dependt on vscode cofiguration path set kora
     set_vscode_user_path();
+    //codeblock installed ache kina ta check kora
     check_codeblocks();
+    //Wget installed ache kina ta check kora
     check_wget();
 }
+// print sign in colour
 void print_sign()
 {
     printf("  [");        //
+    //green color scii code
     printf("\033[0;32m"); //
-    printf("✓");          //
+    printf("✓");
+    //normal color ascii code         //
     printf("\033[0;0m");  //
     printf("] ");         //
 }
+
+// print cross in colour
 void print_cross()
 {
     printf("  [");        //
+    //red color scii code
     printf("\033[0;31m"); //
-    printf("x");          //
+    printf("x");
+    //normal color ascii code          //
     printf("\033[0;0m");  //
     printf("] ");         //
 }
+// print star in colour
 void print_star()
 {
     printf("  [");        //
@@ -58,13 +70,13 @@ void print_star()
     printf("\033[0;0m");  //
     printf("] ");         //
 }
-
+// print option menu with asci colouring
 int print_option()
 {
     printf("\n  ");       //
-    printf("\033[0;33m"); //
+    printf("\033[0;33m"); // orange colouring
     printf("C ");         //
-    printf("\033[0;0m");  //
+    printf("\033[0;0m");  //normal colouring
     printf("Check\t");    //
     printf("\033[0;33m"); //
     printf("I ");         //

@@ -1,7 +1,6 @@
 #include <windows.h>
 #include <tchar.h>
 #include <Urlmon.h>
-#define vcs_osname 1
 
 // For listing of C Compiler
 // 1. gcc

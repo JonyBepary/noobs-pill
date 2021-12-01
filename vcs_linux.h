@@ -1,10 +1,7 @@
+// since it's a linux  system
 // unistd provide linux os related function
 // here used for getlogin() function
 #include <unistd.h>
-
-// since it's a linux  system
-// osbase has been set 2
-// #define osbase 2
 
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc
@@ -144,25 +141,29 @@ void printbaner3()
 {
     system("./lolcat -r ./script/art3");
 }
+// check all compiler by running system command
 void check_compiler()
 {
     // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
     if (system("gcc -v >/dev/null 2>/dev/null") == 0)
     {
-
+        // storing compile rname
         strcpy(c_compiler_name[0], "Gnu C Compiler");
+        // marking if a compiler is installed
         c_compiler[0] = 1;
     }
     if (system("clang -v >/dev/null 2>/dev/null") == 0)
     {
-
+        // storing compile rname
         strcpy(c_compiler_name[1], "Clang C Compiler");
+        // marking if a compiler is installed
         c_compiler[1] = 1;
     }
     if (system("mcc -v >/dev/null 2>/dev/null") == 0)
     {
-
+        // storing compile rname
         strcpy(c_compiler_name[2], "Microsoft C Compiler");
+        // marking if a compiler is installed
         c_compiler[2] = 1;
     }
     if (system("icc -v >/dev/null 2>/dev/null") == 0)
@@ -174,31 +175,14 @@ void check_compiler()
 }
 void check_vscode()
 {
+    // >/dev/null 2>/dev/null out supressor
+    // sob out /dev/null redirect
     if (system("code -v >/dev/null 2>/dev/null") == 0)
     {
         vscode_editor = 1;
     }
 }
-void check_codeblocks()
-{
-    FILE *fp;
-    /* Open the  command for reading OSCODE. */
-    fp = popen("which /bin/codeblocks", "r");
-    if (fp == NULL)
-    {
-        printf("Failed to run command\n");
-        exit(1);
-    }
-    // Read the output a line at a time - output it
-    fgets(OS_CODE, sizeof(OS_CODE), fp);
-    /* close */
-    if (strcmp(OS_CODE, "/bin/codeblocks"))
-    {
-        codeblocks = 1;
-    }
-    fclose(fp);
-}
-
+// shad paste here
 void check_wget()
 {
     if (system("wget -V >/dev/null 2>/dev/null") == 0)

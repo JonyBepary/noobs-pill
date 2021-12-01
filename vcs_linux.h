@@ -182,7 +182,30 @@ void check_vscode()
         vscode_editor = 1;
     }
 }
-// shad paste here
+
+void check_codeblocks()
+{
+
+    /* Open the  command for reading strinu*/
+    FILE *fp;
+    char striny[4096];
+    fp = popen("which codeblocks", "r");
+    if (fp == NULL)
+    {
+        printf("Failed to run command\n");
+        exit(1);
+    }
+    // Read the output a line at a time - output it
+    fgets(striny, 4096, fp);
+    /* close */
+    if (strcmp(striny, "/usr/bin/codeblocks") >= 0)
+    {
+        codeblocks = 1;
+    }
+    printf("%d %s", codeblocks, striny);
+    fclose(fp);
+}
+
 void check_wget()
 {
     if (system("wget -V >/dev/null 2>/dev/null") == 0)
@@ -190,7 +213,6 @@ void check_wget()
         wget_av = 1;
     }
 }
-
 int check_config()
 {
     // if (access(fname, F_OK) == 0)

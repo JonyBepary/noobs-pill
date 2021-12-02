@@ -7,7 +7,7 @@
 // 1. gcc, 2. clang, 3. mcc
 
 int c_compiler[4] = {0};
-char c_compiler_name[4][30];
+char c_compiler_name[4][4096];
 int vscode_editor = 0;
 int codeblocks = 0;
 int wget_av = 0;
@@ -28,6 +28,7 @@ void check_oscode()
     FILE *fp;
 
     /* Open the  command for reading OSCODE. */
+    // popen
     fp = popen("lsb_release -is", "r");
     if (fp == NULL)
     {
@@ -38,7 +39,7 @@ void check_oscode()
     // Read the output a line at a time - output it
     fgets(OS_CODE, sizeof(OS_CODE), fp);
     /* close */
-    pclose(fp);
+    fclose(fp);
 }
 
 void set_vscode_user_path()
@@ -127,16 +128,17 @@ void print_os_name()
     printf("%s", OS_INFO);
     fclose(fp);
 }
-
+// welcome banner
 void printbaner()
 {
     system("./lolcat -r ./script/art");
 }
-
+// task banner
 void printbaner2()
 {
     system("./lolcat -r ./script/art2");
 }
+// last banner
 void printbaner3()
 {
     system("./lolcat -r ./script/art3");

@@ -39,7 +39,7 @@ void check_oscode()
     // Read the output a line at a time - output it
     fgets(OS_CODE, sizeof(OS_CODE), fp);
     /* close */
-    fclose(fp);
+    pclose(fp);
 }
 
 void set_vscode_user_path()
@@ -126,7 +126,7 @@ void print_os_name()
 
     fgets(OS_INFO, sizeof(OS_INFO), fp);
     printf("%s", OS_INFO);
-    fclose(fp);
+    pclose(fp);
 }
 // welcome banner
 void printbaner()
@@ -205,7 +205,7 @@ void check_codeblocks()
         codeblocks = 1;
     }
     printf("%d %s", codeblocks, striny);
-    fclose(fp);
+    pclose(fp);
 }
 
 void check_wget()

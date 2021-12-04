@@ -1,6 +1,5 @@
 // input output
 #include <stdio.h>
-//system()
 #include <stdlib.h>
 #include <string.h>
 
@@ -25,41 +24,44 @@
 #endif
 
 char command;
+int Manual_Download = 0;
 void calibrate()
 {
-    //koyta compiler installed ache ta ache check kora
+    // koyta compiler installed ache ta ache check kora
     check_compiler();
-    //vscode installed ache kina ta check kora
+    // vscode installed ache kina ta check kora
     check_vscode();
-    // dependt on vscode cofiguration path set kora
+    // dependt on SYSTEM VSCODE cofiguration path set kora
     set_vscode_user_path();
-    //codeblock installed ache kina ta check kora
+    // dependt on SYSTEM VSCODE cofig.ok path set kora.
+    set_config_path();
+    // codeblock installed ache kina ta check kora
     check_codeblocks();
-    //Wget installed ache kina ta check kora
+    // Wget installed ache kina ta check kora
     check_wget();
 }
 // print sign in colour
 void print_sign()
 {
-    printf("  [");        //
-    //green color scii code
+    printf("  ["); //
+    // green color scii code
     printf("\033[0;32m"); //
     printf("✓");
-    //normal color ascii code         //
-    printf("\033[0;0m");  //
-    printf("] ");         //
+    // normal color ascii code         //
+    printf("\033[0;0m"); //
+    printf("] ");        //
 }
 
 // print cross in colour
 void print_cross()
 {
-    printf("  [");        //
-    //red color scii code
+    printf("  ["); //
+    // red color scii code
     printf("\033[0;31m"); //
     printf("x");
-    //normal color ascii code          //
-    printf("\033[0;0m");  //
-    printf("] ");         //
+    // normal color ascii code          //
+    printf("\033[0;0m"); //
+    printf("] ");        //
 }
 // print star in colour
 void print_star()
@@ -76,7 +78,7 @@ int print_option()
     printf("\n  ");       //
     printf("\033[0;33m"); // orange colouring
     printf("C ");         //
-    printf("\033[0;0m");  //normal colouring
+    printf("\033[0;0m");  // normal colouring
     printf("Check\t");    //
     printf("\033[0;33m"); //
     printf("I ");         //
@@ -254,13 +256,15 @@ int check_command()
     }
     if (command == 'I' || command == 'i')
     {
-        if (strcmp(OS_CODE, "Debian"))
+        if (Manual_Download == 1)
         {
             Download_LIST_Through_wget();
             app_exec();
-            vscode_plugin_exec();
-            config_exec();
+            /* code */
         }
+        app_exec();
+        vscode_plugin_exec();
+        config_exec();
     }
     if (command == 'S' || command == 's')
     {

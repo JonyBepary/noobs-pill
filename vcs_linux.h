@@ -22,6 +22,7 @@ char OS_CODE[4096];
 // OS_CODE set from check_oscode() function
 // format: /home/{user}/.config/Code/User/
 char vscode_user_path[4096];
+char config_ok_path[4096];
 
 void check_oscode()
 {
@@ -46,6 +47,13 @@ void set_vscode_user_path()
 {
     strcpy(vscode_user_path, getenv("HOME"));
     strcat(vscode_user_path, "/.config/Code/User/");
+    strcpy(fname, vscode_user_path);
+    strcat(fname, "config.ok");
+}
+void set_config_path()
+{
+    strcpy(config_ok_path, vscode_user_path);
+    strcat(config_ok_path, "config.ok");
 }
 
 void clear_screen()
@@ -91,7 +99,8 @@ int Download_LIST_Through_wget()
         return -1;
     }
 }
-
+// Execute shell to install vscode
+//  depending on distro.
 void app_exec()
 {
     printf("Installing required program\n");
@@ -100,11 +109,11 @@ void app_exec()
     {
         system("sudo sh ./script/debian.sh");
         vscode_editor = 1;
-    }
-    if (strcmp(OS_CODE, "Debian") && codeblocks == 0)
-    {
-        system("sudo apt install codeblocks");
-        codeblocks = 1;
+        if (codeblocks == 0)
+        {
+            system("sudo apt install codeblocks");
+            codeblocks = 1;
+        }
     }
     printf("All program installed\n");
 }
@@ -217,14 +226,15 @@ void check_wget()
 }
 int check_config()
 {
-    // if (access(fname, F_OK) == 0)
-    // {
-    //     // file exists
-    // }
-    // else
-    // {
-    //     // file doesn't exist
-    // }
-    return -1;
+
+    if (access(config_ok_path, F_OK) == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+        // file doesn't exist
+    }
 }
 // Added Latest Download links for Windows Packages

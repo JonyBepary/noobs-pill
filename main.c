@@ -12,6 +12,7 @@ int main()
     construct_download_list();
     // landing page
     clear_screen();
+    start_ui();
     while (1)
     {
         start_ui();

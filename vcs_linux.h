@@ -140,7 +140,7 @@ void print_os_name()
 // welcome banner
 void printbaner()
 {
-    system("./packages/lolcat -r ./script/art  2>/dev/null");
+    system("./packages/lolcat -r ./script/art ");
 }
 // task banner
 void printbaner2()

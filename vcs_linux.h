@@ -1,6 +1,6 @@
 // since it's a linux  system
 // unistd provide linux os related function
-// here used for getlogin() function
+// here used for getlogin(), and access() function
 #include <unistd.h>
 
 // For listing of C Compiler
@@ -47,8 +47,6 @@ void set_vscode_user_path()
 {
     strcpy(vscode_user_path, getenv("HOME"));
     strcat(vscode_user_path, "/.config/Code/User/");
-    strcpy(fname, vscode_user_path);
-    strcat(fname, "config.ok");
 }
 void set_config_path()
 {
@@ -64,18 +62,18 @@ void clear_screen()
 void construct_download_list()
 {
     FILE *fp;
-    fp = fopen("./DL_LIST_NIX", "a+");
+    fp = fopen("./packages/DL_LIST_NIX", "a+");
     if (fp == NULL)
     {
         printf("Could not open file");
     }
-    if (strcmp(OS_CODE, "Debian"))
+    if (strstr(OS_CODE, "Debian") != NULL)
     {
 
         if (vscode_editor == 0)
             fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64");
     }
-    if (strcmp(OS_CODE, "Manjaro"))
+    if (strstr(OS_CODE, "Manjaro") != NULL)
     {
         if (vscode_editor == 0)
             fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64");
@@ -86,6 +84,8 @@ void construct_download_list()
     fclose(fp);
 }
 
+// Download file from text file via wget
+// for windows and manual installation for linux
 int Download_LIST_Through_wget()
 {
 
@@ -100,12 +100,12 @@ int Download_LIST_Through_wget()
     }
 }
 // Execute shell to install vscode
-//  depending on distro.
+// depending on distro.
 void app_exec()
 {
     printf("Installing required program\n");
 
-    if (strcmp(OS_CODE, "Debian") && vscode_editor == 0)
+    if (strstr(OS_CODE, "Debian" != NULL) && vscode_editor == 0)
     {
         system("sudo sh ./script/debian.sh");
         vscode_editor = 1;
@@ -194,6 +194,7 @@ void check_vscode()
     }
 }
 
+//
 void check_codeblocks()
 {
 
@@ -208,8 +209,8 @@ void check_codeblocks()
     }
     // Read the output a line at a time - output it
     fgets(striny, 4096, fp);
-    /* close */
-    if (strcmp(striny, "/usr/bin/codeblocks") >= 0)
+    puts(striny);
+    if (strstr(striny, "codeblocks") != NULL)
     {
         codeblocks = 1;
     }
@@ -234,7 +235,6 @@ int check_config()
     else
     {
         return -1;
-        // file doesn't exist
     }
 }
 // Added Latest Download links for Windows Packages

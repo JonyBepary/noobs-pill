@@ -1,3 +1,5 @@
+// -lurlmon
+
 #include <windows.h>
 #include <tchar.h>
 #include <Urlmon.h>
@@ -39,7 +41,7 @@ int Download_Wget()
 int Download_LIST_Through_wget()
 {
 
-    if (system(".\\wget.exe --content-disposition -i .\\DL_LIST_WIN") == 0)
+    if (system(".\\wget.exe --content-disposition -i .\\packages\\DL_LIST_WIN") == 0)
     {
         printf("Download Success!!!\n");
         /* code */

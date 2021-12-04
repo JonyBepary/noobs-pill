@@ -114,6 +114,12 @@ int check_exec()
         print_cross();
         printf("Codeblocks IDE\n");
     }
+    else
+    {
+        print_cross();
+        printf("Codeblocks IDE\n");
+    }
+
     char cmd_command;
     printf("\033[0;33m"); //
     printf("\n\t\t\tE "); //
@@ -132,14 +138,6 @@ int check_exec()
 }
 int print_system_info()
 {
-    // printf("==========================================\n");
-    // // printf("             NOOBS PILL                       \n");
-    // printf("             NOOBS ");
-    // printf("\033[0;35m"); // Set the text to the color red
-    // printf("PILL                       \n");
-    // printf("\033[0;0m"); // Set the text to the color red
-
-    // printf("==========================================\n");
     // // Printing OS info
     print_star();
 
@@ -218,7 +216,18 @@ void check_component()
     {
 
         print_cross();
-        printf("  Visual studio code not installed!\n");
+        printf(" Visual studio code not installed!\n");
+    }
+    if (codeblocks == 1)
+    {
+        print_sign();
+        printf(" Codeblocks IDE installed!\n");
+    }
+    else
+    {
+
+        print_cross();
+        printf(" Codeblocks IDE not installed!\n");
     }
 
     if (check_config() == -1)
@@ -299,11 +308,13 @@ void config_exec()
     printf("%s\n", tmp);
     if (system(tmp) == 0)
     {
+
+        // backup existing code settings.json
+        // cp -vf settings.json settings.json.ba
         char tmp2[4096];
         strcpy(tmp2, "cp -vf ");
         strcat(tmp2, vscode_user_path);
-        strcat(tmp2, "settings.json");
-        strcat(tmp2, " ");
+        strcat(tmp2, "settings.json ");
         strcat(tmp2, vscode_user_path);
         strcat(tmp2, "settings.json.bak");
         system(tmp2);

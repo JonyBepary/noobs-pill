@@ -1,4 +1,3 @@
-// -lurlmon
 #include "vcs_lib.h"
 
 int main()

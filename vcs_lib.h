@@ -140,7 +140,6 @@ int print_system_info()
 {
     // // Printing OS info
     print_star();
-
     printf("USER: %s\n", getlogin());
     print_star();
     printf("OS: ");

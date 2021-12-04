@@ -11,6 +11,7 @@ int main()
     // downlond link construct kore
     construct_download_list();
     // landing page
+    clear_screen();
     while (1)
     {
         start_ui();

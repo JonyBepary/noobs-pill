@@ -89,7 +89,7 @@ void construct_download_list()
 int Download_LIST_Through_wget()
 {
 
-    if (system("wget  --content-disposition --directory-prefix=./packages -i ./DL_LIST_NIX") == 0)
+    if (system("wget  --content-disposition --directory-prefix=./packages -i ./packagesDL_LIST_NIX") == 0)
     {
         printf("Download Success!!!\n");
         return 0;
@@ -105,7 +105,7 @@ void app_exec()
 {
     printf("Installing required program\n");
 
-    if (strstr(OS_CODE, "Debian" != NULL) && vscode_editor == 0)
+    if (strstr(OS_CODE, "Debian") != NULL && vscode_editor == 0)
     {
         system("sudo sh ./script/debian.sh");
         vscode_editor = 1;

@@ -131,17 +131,17 @@ void print_os_name()
 // welcome banner
 void printbaner()
 {
-    system("./lolcat -r ./script/art");
+    system("./packages/lolcat -r ./script/art");
 }
 // task banner
 void printbaner2()
 {
-    system("./lolcat -r ./script/art2");
+    system("./packages/lolcat -r ./script/art2");
 }
 // last banner
 void printbaner3()
 {
-    system("./lolcat -r ./script/art3");
+    system("./packages/lolcat -r ./script/art3");
 }
 // check all compiler by running system command
 void check_compiler()

@@ -259,7 +259,7 @@ int check_command()
     // printf("~%c\n", command);
     if (command == 'C' || command == 'c')
     {
-        // clear_screen();
+        clear_screen();
         // check_exec();
         check_component();
     }

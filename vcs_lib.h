@@ -143,10 +143,8 @@ int print_system_info()
     print_star();
     printf("USER: %s\n", getlogin());
     print_star();
-    printf("OS: ");
-    print_os_name();
-    // Printing Compiler info
-    char compiler_name[30];
+    printf("OS: %s", OS_CODE);
+
     // sys_architechture: 1 for x86, 2 for x64 , 3 for AArch32 and 4 for AArch64
     print_star();
     printf("Arch: ");

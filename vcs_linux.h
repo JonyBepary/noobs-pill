@@ -107,7 +107,7 @@ void app_exec()
 
     if (strstr(OS_CODE, "Debian") != NULL && vscode_editor == 0)
     {
-        system("sudo sh ./script/debian.sh");
+        system("sh ./script/debian.sh");
         vscode_editor = 1;
         if (codeblocks == 0)
         {

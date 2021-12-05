@@ -107,7 +107,13 @@ void app_exec()
 
     if (strstr(OS_CODE, "Debian") != NULL && vscode_editor == 0)
     {
+        if (wget_av == 1)
+        {
+            system("sudo apt update");
+            system("sudo apt install wget -y");
+        }
         system("sh ./script/debian.sh");
+
         vscode_editor = 1;
         if (codeblocks == 0)
         {

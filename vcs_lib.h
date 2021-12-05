@@ -27,6 +27,7 @@ char command;
 int Manual_Download = 0;
 void calibrate()
 {
+    print_os_name();
     // koyta compiler installed ache ta ache check kora
     check_compiler();
     // vscode installed ache kina ta check kora
@@ -270,9 +271,12 @@ int check_command()
             app_exec();
             /* code */
         }
-        app_exec();
-        vscode_plugin_exec();
-        config_exec();
+        else
+        {
+            app_exec();
+            vscode_plugin_exec();
+            config_exec();
+        }
     }
     if (command == 'S' || command == 's')
     {

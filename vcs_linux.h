@@ -39,6 +39,7 @@ void check_oscode()
 
     // Read the output a line at a time - output it
     fgets(OS_CODE, sizeof(OS_CODE), fp);
+
     /* close */
     pclose(fp);
 }
@@ -56,7 +57,7 @@ void set_config_path()
 
 void clear_screen()
 {
-    system("clear");
+    // system("clear");
 }
 
 void construct_download_list()
@@ -107,6 +108,8 @@ void app_exec()
 
     if (strstr(OS_CODE, "Debian") != NULL && vscode_editor == 0)
     {
+        printf("=============DEBIAN==============\n");
+        printf("%s script executing", OS_CODE);
         if (wget_av == 1)
         {
             system("sudo apt update");
@@ -126,8 +129,8 @@ void app_exec()
 
 void print_os_name()
 {
-    FILE *fp;
 
+    FILE *fp;
     /* Open the  command for reading OSCODE. */
     fp = popen("lsb_release -ds", "r");
     if (fp == NULL)
@@ -137,10 +140,8 @@ void print_os_name()
         printf("\033[0;0m");
         exit(1);
     }
-    char OS_INFO[4096];
+    fgets(OS_CODE, 4096, fp);
 
-    fgets(OS_INFO, sizeof(OS_INFO), fp);
-    printf("%s", OS_INFO);
     pclose(fp);
 }
 // welcome banner

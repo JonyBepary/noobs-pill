@@ -58,7 +58,7 @@ void set_config_path()
 void clear_screen()
 {
 
-    // system("clear");
+    system("clear");
 }
 
 void construct_download_list()

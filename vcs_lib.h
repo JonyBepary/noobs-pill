@@ -267,13 +267,31 @@ int check_command()
         {
             Download_LIST_Through_wget();
             app_exec();
-            /* code */
+            if (check_config() != -1)
+            {
+                printf("System has already been Configured\n");
+            }
+            else
+            {
+                vscode_plugin_exec();
+                config_exec();
+                /* code */
+            }
         }
+
         else
         {
             app_exec();
-            vscode_plugin_exec();
-            config_exec();
+            if (check_config() != -1)
+            {
+                printf("System has already been Configured\n");
+            }
+            else
+            {
+                vscode_plugin_exec();
+                config_exec();
+                /* code */
+            }
         }
     }
     if (command == 'S' || command == 's')
@@ -299,7 +317,6 @@ void vscode_plugin_exec()
 }
 void config_exec()
 {
-
     printf("Configuring vscode\n");
     char tmp[4096];
     strcpy(tmp, "cat ");
@@ -326,6 +343,15 @@ void config_exec()
     if (system(cmd) != 0)
     {
         printf("config exec failed");
+    }
+    else
+    {
+        char cmdon[4096];
+        strcpy(cmdon, "sudo touch ");
+        strcat(cmdon, vscode_user_path);
+        strcat(cmdon, "config.ok");
+        // puts(cmdon);
+        system(cmdon);
     }
 }
 

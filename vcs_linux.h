@@ -58,7 +58,7 @@ void set_config_path()
 void clear_screen()
 {
 
-    system("clear");
+    // system("clear");
 }
 
 void construct_download_list()
@@ -111,11 +111,6 @@ void app_exec()
     {
         printf("=============DEBIAN==============\n");
         printf("%s script executing", OS_CODE);
-        if (wget_av == 1)
-        {
-            system("sudo apt update");
-            system("sudo apt install wget -y");
-        }
         system("sh ./script/debian.sh");
 
         vscode_editor = 1;

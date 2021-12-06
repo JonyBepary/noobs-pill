@@ -27,6 +27,7 @@ char command;
 int Manual_Download = 0;
 void calibrate()
 {
+    check_oscode();
     print_os_name();
     // koyta compiler installed ache ta ache check kora
     check_compiler();
@@ -143,7 +144,7 @@ int print_system_info()
     print_star();
     printf("USER: %s\n", getlogin());
     print_star();
-    printf("OS: %s", OS_CODE);
+    printf("OS: %s", OS_NAME);
 
     // sys_architechture: 1 for x86, 2 for x64 , 3 for AArch32 and 4 for AArch64
     print_star();

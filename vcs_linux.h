@@ -18,6 +18,7 @@ int wget_av_download_ok = 0;
 // OS_CODE set from check_oscode() function
 // and store Distro name and version
 char OS_CODE[4096];
+char OS_NAME[4096];
 
 // OS_CODE set from check_oscode() function
 // format: /home/{user}/.config/Code/User/
@@ -43,7 +44,6 @@ void check_oscode()
     /* close */
     pclose(fp);
 }
-
 void set_vscode_user_path()
 {
     strcpy(vscode_user_path, getenv("HOME"));
@@ -150,7 +150,7 @@ void print_os_name()
         printf("\033[0;0m");
         exit(1);
     }
-    fgets(OS_CODE, 4096, fp);
+    fgets(OS_NAME, 4096, fp);
 
     pclose(fp);
 }

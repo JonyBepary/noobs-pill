@@ -10,6 +10,10 @@ int main()
     // marked variable gula theke  FILE/IO use kore
     // downlond link construct kore
     construct_download_list();
+    // printf("%s\n", OS_CODE);
+    // printf("%s\n", OS_NAME);
+    // return 0;
+
     // landing page
     clear_screen();
     start_ui();

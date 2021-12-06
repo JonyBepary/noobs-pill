@@ -132,8 +132,19 @@ void app_exec()
             codeblocks = 1;
         }
     }
-    else
-        printf("All program installed\n");
+    else if (strstr(OS_CODE, "Ubuntu") != NULL && vscode_editor == 0)
+    {
+        printf("============= Ubuntu ==============\n");
+        printf("%s script executing", OS_CODE);
+        system("sh ./script/debian.sh");
+        vscode_editor = 1;
+        if (codeblocks == 0)
+        {
+            system("sudo apt install codeblocks");
+            codeblocks = 1;
+        }
+    }
+    printf("All program installed\n");
 }
 
 void print_os_name()

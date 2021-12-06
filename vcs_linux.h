@@ -109,7 +109,7 @@ void app_exec()
 
     if (strstr(OS_CODE, "Debian") != NULL && vscode_editor == 0)
     {
-        printf("=============DEBIAN==============\n");
+        printf("============= DEBIAN ==============\n");
         printf("%s script executing", OS_CODE);
         system("sh ./script/debian.sh");
 
@@ -120,7 +120,20 @@ void app_exec()
             codeblocks = 1;
         }
     }
-    printf("All program installed\n");
+    else if (strstr(OS_CODE, "Linuxmint") != NULL && vscode_editor == 0)
+    {
+        printf("============= Linux Mint ==============\n");
+        printf("%s script executing", OS_CODE);
+        system("sh ./script/debian.sh");
+        vscode_editor = 1;
+        if (codeblocks == 0)
+        {
+            system("sudo apt install codeblocks");
+            codeblocks = 1;
+        }
+    }
+    else
+        printf("All program installed\n");
 }
 
 void print_os_name()
@@ -131,6 +144,7 @@ void print_os_name()
     fp = popen("lsb_release -ds", "r");
     if (fp == NULL)
     {
+
         printf("\033[0;31m"); // Set the text to the color red
         printf("Failed to Get os Name\n");
         printf("\033[0;0m");

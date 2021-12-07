@@ -114,11 +114,6 @@ void app_exec()
         system("sh ./script/debian.sh");
 
         vscode_editor = 1;
-        if (codeblocks == 0)
-        {
-            system("sudo apt install codeblocks");
-            codeblocks = 1;
-        }
     }
     else if (strstr(OS_CODE, "Linuxmint") != NULL && vscode_editor == 0)
     {
@@ -126,11 +121,6 @@ void app_exec()
         printf("%s script executing", OS_CODE);
         system("sh ./script/debian.sh");
         vscode_editor = 1;
-        if (codeblocks == 0)
-        {
-            system("sudo apt install codeblocks");
-            codeblocks = 1;
-        }
     }
     else if (strstr(OS_CODE, "Ubuntu") != NULL && vscode_editor == 0)
     {
@@ -138,11 +128,24 @@ void app_exec()
         printf("%s script executing", OS_CODE);
         system("sh ./script/debian.sh");
         vscode_editor = 1;
-        if (codeblocks == 0)
-        {
-            system("sudo apt install codeblocks");
-            codeblocks = 1;
-        }
+    }
+    if (strstr(OS_CODE, "Debian") != NULL && codeblocks == 0)
+    {
+        system("sudo apt update");
+        system("sudo apt install codeblocks");
+        codeblocks = 1;
+    }
+    else if (strstr(OS_CODE, "Linuxmint") != NULL && codeblocks == 0)
+    {
+        system("sudo apt update");
+        system("sudo apt install codeblocks");
+        codeblocks = 1;
+    }
+    else if (strstr(OS_CODE, "Ubuntu") != NULL && codeblocks == 0)
+    {
+        system("sudo apt update");
+        system("sudo apt install codeblocks");
+        codeblocks = 1;
     }
     printf("All program installed\n");
 }

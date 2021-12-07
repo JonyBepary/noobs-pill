@@ -1,8 +1,6 @@
 // -lurlmon
 
 #include <windows.h>
-#include <tchar.h>
-#include <Urlmon.h>
 
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc
@@ -41,6 +39,7 @@ void set_vscode_user_path()
 }
 void set_config_path()
 {
+
     strcpy(vscode_user_path, "%APPDATA%\\Code\\User\\config.ok");
     strcat(config_ok_path, "config.ok");
 }
@@ -192,6 +191,7 @@ int print_option()
 
 int print_system_info()
 {
-    system("systeminfo | findstr /B /C:\"Registered Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\"");
+
+    system("systeminfo | findstr /B /C:\"Registered  Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\"");
     return 0;
 }

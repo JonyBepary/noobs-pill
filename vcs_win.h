@@ -1,6 +1,7 @@
 // -lurlmon
 
 #include <windows.h>
+#include "f_api32.h"
 
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc
@@ -27,10 +28,11 @@ char config_ok_path[4096];
 void check_oscode()
 {
     strcpy(OS_CODE, "Windows");
+    system("systeminfo | findstr /B /C:\"Registered Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\" > psi");
 }
 void print_os_name()
 {
-    strcpy(OS_CODE, "Windows");
+    system("type .\\psi");
 }
 
 void set_vscode_user_path()
@@ -39,9 +41,7 @@ void set_vscode_user_path()
 }
 void set_config_path()
 {
-
-    strcpy(vscode_user_path, "%APPDATA%\\Code\\User\\config.ok");
-    strcat(config_ok_path, "config.ok");
+    strcpy(config_ok_path, "%APPDATA%\\Code\\User\\config.ok");
 }
 void printbaner()
 {
@@ -120,6 +120,7 @@ void check_vscode()
         vscode_editor = 1;
     }
 }
+
 void check_wget()
 {
     if (system("wget -V >nul 2>nul") == 0)
@@ -164,6 +165,7 @@ void print_star()
     printf("\033[0;0m");  //
     printf("] ");         //
 }
+
 // print option menu with asci colouring
 int print_option()
 {
@@ -189,9 +191,19 @@ int print_option()
     return 1;
 }
 
-int print_system_info()
+void check_codeblocks()
 {
 
-    system("systeminfo | findstr /B /C:\"Registered  Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\"");
+    codeblocks = fileExists("C:\\Program Files\\CodeBlocks\\codeblocks.exe");
+}
+
+int print_system_info()
+{
+    system("systeminfo | findstr /B /C:\"Registered Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\"");
     return 0;
+}
+
+void app_exec()
+{
+    Download_Wget();
 }

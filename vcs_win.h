@@ -1,7 +1,6 @@
 // -lurlmon
 
 #include <windows.h>
-#include "f_api32.h"
 
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc

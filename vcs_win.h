@@ -27,6 +27,7 @@ char config_ok_path[4096];
 void check_oscode()
 {
     strcpy(OS_CODE, "Windows");
+    // Print >> OS Name: OS Version: Registered Owner: System Type:
     system("systeminfo | findstr /B /C:\"Registered Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\" > psi");
 }
 void print_os_name()
@@ -49,7 +50,7 @@ void printbaner()
 
 void printbaner2()
 {
-    system("type .\\script\\art2");
+    system("type .\\script\\art2w");
 }
 
 void printbaner3()
@@ -189,10 +190,9 @@ int print_option()
 
     return 1;
 }
-
+// string literal
 int isFileExists(TCHAR *PATH)
 {
-
     WIN32_FIND_DATA FindFileData;
     HANDLE handle = FindFirstFile(PATH, &FindFileData);
     int found = handle != INVALID_HANDLE_VALUE;
@@ -231,11 +231,15 @@ void app_exec()
         codeblocks__download_ok = 1;
     if (vscode_editor_download_ok)
     {
-        ShellExecute(NULL, "open", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        // run exe as admin
+        // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
+        // FOLDER LOCATION,SHOWCOMMAND
+        ShellExecute(NULL, "runas", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
     }
     if (gcc_editor_download_ok)
     {
-        ShellExecute(NULL, "open", "\".\\gcc-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+
+        ShellExecute(NULL, "runas", "\".\\gcc-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
     }
     clear_screen();
 }

@@ -1,7 +1,6 @@
 // -lurlmon
 
 #include <windows.h>
-
 // For listing of C Compiler
 // 1. gcc, 2. clang, 3. mcc
 
@@ -230,9 +229,14 @@ void app_exec()
         vscode_editor_download_ok = 1;
     if (isFileExists(".\\codeblocks-latest.exe"))
         codeblocks__download_ok = 1;
+    if (vscode_editor_download_ok)
+    {
+        ShellExecute(NULL, "open", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+    }
     if (gcc_editor_download_ok)
     {
-        }
+        ShellExecute(NULL, "open", "\".\\gcc-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+    }
 
     clear_screen();
 }

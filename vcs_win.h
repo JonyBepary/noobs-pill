@@ -237,6 +237,5 @@ void app_exec()
     {
         ShellExecute(NULL, "open", "\".\\gcc-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
     }
-
     clear_screen();
 }

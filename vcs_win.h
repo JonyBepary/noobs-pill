@@ -191,10 +191,23 @@ int print_option()
     return 1;
 }
 
+int isFileExists(TCHAR *PATH)
+{
+
+    WIN32_FIND_DATA FindFileData;
+    HANDLE handle = FindFirstFile(PATH, &FindFileData);
+    int found = handle != INVALID_HANDLE_VALUE;
+    if (found)
+    {
+        FindClose(handle);
+    }
+    return found;
+}
+
 void check_codeblocks()
 {
 
-    codeblocks = fileExists("C:\\Program Files\\CodeBlocks\\codeblocks.exe");
+    codeblocks = isFileExists("C:\\Program Files\\CodeBlocks\\codeblocks.exe");
 }
 
 int print_system_info()

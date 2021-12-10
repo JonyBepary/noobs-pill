@@ -11,7 +11,7 @@ int codeblocks = 0;
 int wget_av = 0;
 int vscode_editor_download_ok = 0;
 int gcc_editor_download_ok = 0;
-int codeblocks__download_ok = 0;
+int codeblocks_download_ok = 0;
 int wget_av_download_ok = 0;
 
 // OS_CODE set from check_oscode() function
@@ -208,6 +208,31 @@ void check_codeblocks()
     codeblocks = isFileExists("C:\\Program Files\\CodeBlocks\\codeblocks.exe");
 }
 
+void construct_download_list()
+{
+    FILE *fp;
+    fp = fopen("./packages/DL_LIST_WIN", "a+");
+    if (fp == NULL)
+    {
+        printf("Could not open file");
+    }
+    if (strstr(OS_CODE, "Debian") != NULL)
+    {
+
+        if (vscode_editor == 0)
+            fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64");
+    }
+    if (strstr(OS_CODE, "Manjaro") != NULL)
+    {
+        if (vscode_editor == 0)
+            fprintf(fp, "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64");
+
+        if (codeblocks == 0)
+            fprintf(fp, "https://sourceforge.net/projects/codeblocks/files/latest/download");
+    }
+    fclose(fp);
+}
+
 int print_system_info()
 {
     system("systeminfo | findstr /B /C:\"Registered Owner\" /C:\"OS Name\" /C:\"OS Version\" /C:\"System Type\"");
@@ -219,6 +244,13 @@ void Download_file_wget()
     system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user\" -O vscode-latest.exe");
     system(".\\wget.exe \"https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download\" -O codeblocks-latest.exe");
 }
+int activate_7z()
+{
+    if (!isFileExists("C:\\Program Files\\7-Zip\\7z.exe"))
+    {
+        ShellExecute(NULL, "runas", "\".\\7z-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+    }
+}
 void app_exec()
 {
     Download_Wget();
@@ -228,18 +260,27 @@ void app_exec()
     if (isFileExists(".\\vscode-latest.exe"))
         vscode_editor_download_ok = 1;
     if (isFileExists(".\\codeblocks-latest.exe"))
-        codeblocks__download_ok = 1;
+        codeblocks_download_ok = 1;
+    activate_7z();
     if (vscode_editor_download_ok)
     {
         // run exe as admin
         // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
         // FOLDER LOCATION,SHOWCOMMAND
         ShellExecute(NULL, "runas", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        printf("Press any key to continue....\n");
+        getchar();
     }
-    if (gcc_editor_download_ok)
+
+    if (codeblocks_download_ok)
     {
 
-        ShellExecute(NULL, "runas", "\".\\gcc-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        printf("Press any key to continue....\n");
+        getchar();
     }
     clear_screen();
+}
+void config_exec()
+{
 }

@@ -9,23 +9,23 @@ int main()
     calibrate();
     // marked variable gula theke  FILE/IO use kore
     // downlond link construct kore
-    construct_download_list();
+    // construct_download_list();
     // printf("%s\n", OS_CODE);
     // printf("%s\n", OS_NAME);
     // return 0;
-
-    // landing page
     clear_screen();
     start_ui();
-    while (1)
-    {
-        start_ui();
-        if (check_command() == -1)
-            break;
-        /* code */
-    }
-    clear_screen();
-    printbaner2();
+    return 0;
+    // landing page
+    // while (1)
+    // {
+    //     start_ui();
+    //     if (check_command() == -1)
+    //         break;
+    //     /* code */
+    // }
+    // clear_screen();
+    // printbaner2();
 
     return 0;
 }

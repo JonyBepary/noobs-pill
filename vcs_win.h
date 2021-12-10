@@ -10,7 +10,7 @@ int vscode_editor = 0;
 int codeblocks = 0;
 int wget_av = 0;
 int vscode_editor_download_ok = 0;
-int gcc_editor_download_ok = 0;
+int gcc_download_ok = 0;
 int codeblocks_download_ok = 0;
 int wget_av_download_ok = 0;
 
@@ -256,18 +256,25 @@ void app_exec()
     Download_Wget();
     Download_file_wget();
     if (isFileExists(".\\gcc-latest.7z"))
-        gcc_editor_download_ok = 1;
+        gcc_download_ok = 1;
     if (isFileExists(".\\vscode-latest.exe"))
         vscode_editor_download_ok = 1;
     if (isFileExists(".\\codeblocks-latest.exe"))
         codeblocks_download_ok = 1;
     activate_7z();
+    if (gcc_download_ok)
+    {
+        system("\"C:\\Program Files\\7-Zip\\7z.exe \" x gcc-latest.7z -O%HOMEDRIVE%");
+        system(".\\script\\make.bat");
+        clear_screen();
+    }
     if (vscode_editor_download_ok)
     {
         // run exe as admin
         // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
         // FOLDER LOCATION,SHOWCOMMAND
         ShellExecute(NULL, "runas", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        clear_screen();
         printf("Press any key to continue....\n");
         getchar();
     }
@@ -276,6 +283,7 @@ void app_exec()
     {
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        clear_screen();
         printf("Press any key to continue....\n");
         getchar();
     }

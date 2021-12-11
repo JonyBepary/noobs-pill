@@ -1,6 +1,6 @@
 # noob's pill
 
-![Banner of noobspill linux](/home/jony/noobs-pill/banner.png)
+![Banner of noobspill linux](https://raw.githubusercontent.com/JonyBepary/noobs-pill/main/banner.png)
 
 Just a simple program named noobs-pill. to construct an easy and fun
 programming environment for beginners.

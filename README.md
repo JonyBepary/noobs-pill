@@ -5,7 +5,7 @@
 Just a simple program named noobs-pill. to construct an easy and fun
 programming environment for beginners.
 
-This program can Automatically download,  install and configure  **Gnu C Compiler**, **Visual Studio Code** with required plugins.
+This program can Automatically download, install and configure **Gnu C Compiler**, **Visual Studio Code** with required plugins.
 
 ## How To use
 
@@ -13,7 +13,7 @@ This program can Automatically download,  install and configure  **Gnu C Compile
 
 First Download [binary](https://github.com/JonyBepary/noobs-pill/releases) .
 
-Extract the tarball archive file 
+Extract the tarball archive file
 
 ```sh
 tar -xf noobs-pill-linux64-v1.0.2-alpha.tar.gz
@@ -33,15 +33,13 @@ And run the binary executable
 
 Then follow the on-screen instructions to completion.
 
-
-
 ### For Windows
 
 First Download [binary](https://github.com/JonyBepary/noobs-pill/releases) .
 
 Extract noobs-pill-win64-vx.x.x-alpha.zip
 
-Go to extracted folder then 
+Go to extracted folder then
 
 run 'noobspill.exe'
 
@@ -49,19 +47,20 @@ Then follow the on-screen instructions to completion.
 
 ## For developers
 
-###		Compilation instruction Linux based system.
+### Compilation instruction Linux based system.
 
 ```sh
 gcc main.c -o noobspill
 ```
 
-###		Compilation instruction Windows based system.
+### Compilation instruction Windows based system.
 
 ```sh
 gcc main.c -o noobspill -lurlmon
 ```
 
 ## Authors
+
+- [Nishat Tasnin](https://github.com/nishattasnin/)
 - [Sohel Ahmed Jony](https://github.com/JonyBepary)
 - [EHTA SHAMUL ISLAM SHAD](https://github.com/Shadislam1/)
-- [Nishat Tasnin](https://github.com/nishattasnin/)

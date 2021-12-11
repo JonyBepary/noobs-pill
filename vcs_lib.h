@@ -205,9 +205,9 @@ int check_command()
             }
         }
     }
-    if (command == 'S' || command == 's')
+    if (command == 'R' || command == 'r')
     {
-        printf("Still in Devlopment");
+        calibrate();
     }
     if (command == 'E' || command == 'e')
     {

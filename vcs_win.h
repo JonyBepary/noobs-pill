@@ -131,9 +131,12 @@ void check_wget()
 
 int check_config()
 {
-    return -1;
-}
+    char path[4096];
 
+    strcpy(path, getenv("APPDATA"));
+    strcat(path, "\\Code\\User\\config.ok");
+    return isFileExists(path);
+}
 void print_sign()
 {
     printf("  ["); //
@@ -265,7 +268,6 @@ void app_exec()
     if (gcc_download_ok)
     {
         system("\"C:\\Program Files\\7-Zip\\7z.exe \" x gcc-latest.7z -O%HOMEDRIVE%");
-        system(".\\script\\make.bat");
         clear_screen();
     }
     if (vscode_editor_download_ok)
@@ -291,4 +293,10 @@ void app_exec()
 }
 void config_exec()
 {
+    if (!check_config())
+    {
+        system(".\\script\\make.bat");
+        system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
+        system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
+    }
 }

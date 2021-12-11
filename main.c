@@ -15,17 +15,16 @@ int main()
     // return 0;
     clear_screen();
     start_ui();
-    return 0;
     // landing page
-    // while (1)
-    // {
-    //     start_ui();
-    //     if (check_command() == -1)
-    //         break;
-    //     /* code */
-    // }
-    // clear_screen();
-    // printbaner2();
+    while (1)
+    {
+        start_ui();
+        if (check_command() == -1)
+            break;
+        /* code */
+    }
+    clear_screen();
+    printbaner2();
 
     return 0;
 }

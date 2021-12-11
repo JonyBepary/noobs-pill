@@ -37,11 +37,11 @@ Then follow the on-screen instructions to completion.
 
 First Download [binary](https://github.com/JonyBepary/noobs-pill/releases) .
 
-Extract noobs-pill-win64-vx.x.x-alpha.zip
+`Extract noobs-pill-win64-vx.x.x-alpha.zip`
 
 Go to extracted folder then
 
-run 'noobspill.exe'
+`Double click 'noobspill.exe' run.`
 
 Then follow the on-screen instructions to completion.
 

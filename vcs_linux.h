@@ -268,11 +268,12 @@ int check_config()
         return -1;
     }
 }
+
 // Added Latest Download links for Windows Packages
 void print_sign()
 {
     printf("  ["); //
-    // green color scii code
+    // green color ascii code
     printf("\033[0;32m"); //
     printf("✓");
     // normal color ascii code         //
@@ -384,7 +385,7 @@ void config_exec()
     {
 
         // backup existing code settings.json
-        // cp -vf settings.json settings.json.ba
+        // cp -vf settings.json settings.json.bak
         char tmp2[4096];
         strcpy(tmp2, "cp -vf ");
         strcat(tmp2, vscode_user_path);

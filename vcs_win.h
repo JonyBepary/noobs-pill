@@ -244,6 +244,7 @@ int print_system_info()
 void Download_file_wget()
 {
     // system(".\\wget.exe \"https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z\" -O gcc-latest.7z");
+    system(".\\wget.exe \"https://sourceforge.net/projects/mingw-w64/files/Toolchains targetting Win32/Personal Builds/mingw-builds/installer/mingw-w64-install.exe \" -O mingw-w64-install.exe");
     system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user\" -O vscode-latest.exe");
     system(".\\wget.exe \"https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download\" -O codeblocks-latest.exe");
 }
@@ -260,6 +261,8 @@ void app_exec()
     Download_file_wget();
     // if (isFileExists(".\\gcc-latest.7z"))
     //     gcc_download_ok = 1;
+    if (isFileExists(".\\mingw-w64-install.exe\""))
+        gcc_download_ok = 1;
     if (isFileExists(".\\vscode-latest.exe"))
         vscode_editor_download_ok = 1;
     if (isFileExists(".\\codeblocks-latest.exe"))
@@ -270,10 +273,6 @@ void app_exec()
 
     //     clear_screen();
     // }
-    ShellExecute(NULL, "runas", "\".\\packages\\mingw-w64-install.exe \"", NULL, NULL, SW_SHOWNORMAL);
-    clear_screen();
-    printf("Press any key to continue....\n");
-    getchar();
 
     if (vscode_editor_download_ok)
     {
@@ -282,7 +281,7 @@ void app_exec()
         // FOLDER LOCATION,SHOWCOMMAND
         ShellExecute(NULL, "runas", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
         clear_screen();
-        printf("Press any key to continue....\n");
+        printf("Press enter key to continue....\n");
         getchar();
     }
 
@@ -291,10 +290,17 @@ void app_exec()
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
         clear_screen();
-        printf("Press any key to continue....\n");
+        printf("Press enter key to continue....\n");
         getchar();
     }
-    clear_screen();
+
+    if (codeblocks_download_ok)
+    {
+        ShellExecute(NULL, "runas", "\".\\mingw-w64-install.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        clear_screen();
+        printf("Press enter key to continue....\n");
+        getchar();
+    }
 }
 void config_exec()
 {

@@ -12,6 +12,7 @@ int wget_av = 0;
 int vscode_editor_download_ok = 0;
 int gcc_download_ok = 0;
 int codeblocks_download_ok = 0;
+int msys2_download_ok = 0;
 int wget_av_download_ok = 0;
 
 // OS_CODE set from check_oscode() function
@@ -245,37 +246,24 @@ int print_system_info()
 void Download_file_wget()
 {
     // system(".\\wget.exe \"https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z\" -O gcc-latest.7z");
-    system(".\\wget.exe \"https://sourceforge.net/projects/mingw-w64/files/Toolchains targetting Win32/Personal Builds/mingw-builds/installer/mingw-w64-install.exe \" -O mingw-w64-install.exe");
+    system(".\\wget.exe \"https://github.com/msys2/msys2-installer/releases/download/2021-11-30/msys2-x86_64-20211130.exe \" -O msys2-latest.exe");
     system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user\" -O vscode-latest.exe");
     system(".\\wget.exe \"https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download\" -O codeblocks-latest.exe");
 }
-int activate_7z()
-{
-    if (!isFileExists("C:\\Program Files\\7-Zip\\7z.exe"))
-    {
-        ShellExecute(NULL, "runas", "\".\\7z-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
-    }
-}
+
 void app_exec()
 {
     Download_Wget();
     Download_file_wget();
-    // if (isFileExists(".\\gcc-latest.7z"))
-    //     gcc_download_ok = 1;
-    if (isFileExists(".\\mingw-w64-install.exe\""))
-        gcc_download_ok = 1;
+
+    if (isFileExists(".\\msys2-latest.exe\""))
+        msys2_download_ok = 1;
     if (isFileExists(".\\vscode-latest.exe"))
         vscode_editor_download_ok = 1;
     if (isFileExists(".\\codeblocks-latest.exe"))
         codeblocks_download_ok = 1;
-    // activate_7z();
-    // if (gcc_download_ok)
-    // {
 
-    //     clear_screen();
-    // }
-
-    if (vscode_editor_download_ok)
+    if (vscode_editor_download_ok == 1)
     {
         // run exe as admin
         // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
@@ -286,7 +274,7 @@ void app_exec()
         getchar();
     }
 
-    if (codeblocks_download_ok)
+    if (codeblocks_download_ok == 1)
     {
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
@@ -295,9 +283,18 @@ void app_exec()
         getchar();
     }
 
-    if (codeblocks_download_ok)
+    if (msys2_download_ok == 1)
     {
-        ShellExecute(NULL, "runas", "\".\\mingw-w64-install.exe \"", NULL, NULL, SW_SHOWNORMAL);
+
+        ShellExecute(NULL, "runas", "\".\\msys2-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        clear_screen();
+        printf("Press enter key to continue....\n");
+        getchar();
+        ShellExecute(NULL, "runas", "\".\\script\\make.bat \"", NULL, NULL, SW_SHOWNORMAL);
+        clear_screen();
+        printf("Press enter key to continue....\n");
+        getchar();
+        ShellExecute(NULL, "runas", "\".\\script\\install.bat \"", NULL, NULL, SW_SHOWNORMAL);
         clear_screen();
         printf("Press enter key to continue....\n");
         getchar();
@@ -307,7 +304,6 @@ void config_exec()
 {
     if (!check_config())
     {
-        system(".\\script\\make.bat");
         system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
         system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
     }

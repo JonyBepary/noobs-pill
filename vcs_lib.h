@@ -104,7 +104,7 @@ void check_component()
         // init_pair(1, COLOR_, -1);
 
         print_cross();
-        printf("  GNU C Compiler not installed!\n");
+        printf(" GNU C Compiler not installed!\n");
     }
     // printing  all installed c compiler
     for (size_t i = 0; i < 4; i++)
@@ -178,32 +178,22 @@ int check_command()
         {
             Download_LIST_Through_wget();
             app_exec();
-            if (check_config() != -1)
-            {
-                printf("System has already been Configured\n");
-            }
-            else
-            {
-                vscode_plugin_exec();
-                config_exec();
-                /* code */
-            }
         }
 
         else
         {
             app_exec();
-            if (check_config() != -1)
-            {
-                printf("System has already been Configured\n");
-            }
-            else
-            {
-                vscode_plugin_exec();
-                config_exec();
-                /* code */
-            }
         }
+        if (check_config() == -1)
+        {
+            vscode_plugin_exec();
+            config_exec();
+        }
+        else
+        {
+            printf("System has already been Configured\n");
+        }
+        calibrate();
     }
     if (command == 'R' || command == 'r')
     {

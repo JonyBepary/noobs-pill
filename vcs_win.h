@@ -88,34 +88,6 @@ int Download_LIST_Through_wget()
     }
 }
 
-void check_compiler()
-{
-    // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
-    if (system("gcc -v >nul 2>nul") == 0)
-    {
-
-        strcpy(c_compiler_name[0], "Gnu C Compiler");
-        c_compiler[0] = 1;
-    }
-    if (system("clang -v >nul 2>nul") == 0)
-    {
-
-        strcpy(c_compiler_name[1], "clang");
-        c_compiler[1] = 1;
-    }
-    if (system("mcc -v >nul 2>nul") == 0)
-    {
-
-        strcpy(c_compiler_name[2], "Microsoft C Compiler");
-        c_compiler[2] = 1;
-    }
-    if (system("icc -v >nul 2>nul") == 0)
-    {
-
-        strcpy(c_compiler_name[3], "Intel C Compiler");
-        c_compiler[3] = 1;
-    }
-}
 void check_vscode()
 {
     if (system("code -v >nul 2>nul") == 0)
@@ -138,7 +110,14 @@ int check_config()
 
     strcpy(path, getenv("APPDATA"));
     strcat(path, "\\Code\\User\\config.ok");
-    return isFileExists(path);
+    if (isFileExists(path))
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
 }
 void print_sign()
 {
@@ -207,6 +186,36 @@ int isFileExists(TCHAR *PATH)
         FindClose(handle);
     }
     return found;
+}
+
+void check_compiler()
+{
+    // no_comiler = 0, gcc = 1, clang = 2, mcc = 3
+    if (system("gcc -v >nul 2>nul") == 0)
+    {
+
+        strcpy(c_compiler_name[0], "Gnu C Compiler");
+        c_compiler[0] = 1;
+    }
+    if (system("clang -v >nul 2>nul") == 0)
+    {
+
+        strcpy(c_compiler_name[1], "clang");
+        c_compiler[1] = 1;
+    }
+    if (system("mcc -v >nul 2>nul") == 0)
+    {
+
+        strcpy(c_compiler_name[2], "Microsoft C Compiler");
+        c_compiler[2] = 1;
+    }
+    if (system("icc -v >nul 2>nul") == 0)
+    {
+
+        strcpy(c_compiler_name[3], "Intel C Compiler");
+        c_compiler[3] = 1;
+    }
+    msys2 = isFileExists("C:\\msys64\\msys2.exe");
 }
 
 void check_codeblocks()
@@ -294,7 +303,7 @@ void app_exec()
     if (isFileExists(".\\codeblocks-latest.exe") && !codeblocks)
         codeblocks_download_ok = 1;
 
-    if (vscode_editor_download_ok == 1)
+    if (vscode_editor_download_ok == 1 && !vscode_editor)
     {
         // run exe as admin
         // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
@@ -303,14 +312,14 @@ void app_exec()
         press_Y_to_continue_exe();
     }
 
-    if (codeblocks_download_ok == 1)
+    if (codeblocks_download_ok == 1 && !codeblocks)
     {
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
         press_Y_to_continue_exe();
     }
 
-    if (msys2_download_ok == 1)
+    if (msys2_download_ok == 1 && !msys2)
     {
 
         ShellExecute(NULL, "runas", "\".\\msys2-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
@@ -318,14 +327,16 @@ void app_exec()
         ShellExecute(NULL, "runas", "\".\\script\\make.bat \"", NULL, NULL, SW_SHOWNORMAL);
         press_Y_to_continue_script();
         ShellExecute(NULL, "runas", "\".\\script\\install.bat \"", NULL, NULL, SW_SHOWNORMAL);
+        if (isFileExists("C:\\msys64\\mingw64\\bin\\gcc.exe"))
+        {
+            strcpy(c_compiler_name[0], "Gnu C Compiler");
+            c_compiler[0] = 1;
+        }
         press_Y_to_continue_script();
     }
 }
 void config_exec()
 {
-    if (!check_config())
-    {
-        system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
-        system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
-    }
+    system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
+    system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
 }

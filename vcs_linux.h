@@ -325,6 +325,17 @@ int print_option()
     return 1;
 }
 
+void vscode_plugin_exec()
+{
+    printf("Installing required plugin for vscode\n");
+    system("code --install-extension formulahendry.code-runner");
+    system("code --install-extension streetsidesoftware.code-spell-checker");
+    system("code --install-extension ms-vscode.cpptools");
+    system("code --install-extension CoenraadS.bracket-pair-colorizer-2");
+    system("code --install-extension Equinusocio.vsc-community-material-theme");
+    system("code --install-extension vscode-icons-team.vscode-icons");
+}
+
 int print_system_info()
 {
     // // Printing OS info

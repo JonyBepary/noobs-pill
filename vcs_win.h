@@ -340,3 +340,9 @@ void config_exec()
     system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
     system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
 }
+
+void vscode_plugin_exec()
+{
+    printf("Installing required plugin for vscode\n");
+    ShellExecute(NULL, "runas", "\".\\script\\plugin.bat \"", NULL, NULL, SW_SHOWNORMAL);
+}

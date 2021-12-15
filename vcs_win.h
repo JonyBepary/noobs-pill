@@ -13,6 +13,7 @@ int vscode_editor_download_ok = 0;
 int gcc_download_ok = 0;
 int codeblocks_download_ok = 0;
 int msys2_download_ok = 0;
+int msys2 = 0;
 int wget_av_download_ok = 0;
 
 // OS_CODE set from check_oscode() function
@@ -273,11 +274,11 @@ int print_system_info()
 void Download_file_wget()
 {
     // system(".\\wget.exe \"https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z\" -O gcc-latest.7z");
-    if (!isFileExists(".\\msys2-latest.exe\""))
+    if (!isFileExists(".\\msys2-latest.exe\"") && !msys2)
         system(".\\wget.exe \"https://github.com/msys2/msys2-installer/releases/download/2021-11-30/msys2-x86_64-20211130.exe \" -O msys2-latest.exe");
-    if (!isFileExists(".\\vscode-latest.exe"))
+    if (!isFileExists(".\\vscode-latest.exe") && !vscode_editor)
         system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user\" -O vscode-latest.exe");
-    if (!isFileExists(".\\codeblocks-latest.exe"))
+    if (!isFileExists(".\\codeblocks-latest.exe") && !codeblocks)
         system(".\\wget.exe \"https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download\" -O codeblocks-latest.exe");
 }
 
@@ -286,11 +287,11 @@ void app_exec()
     Download_Wget();
     Download_file_wget();
 
-    if (isFileExists(".\\msys2-latest.exe\""))
+    if (isFileExists(".\\msys2-latest.exe\"") && !msys2)
         msys2_download_ok = 1;
-    if (isFileExists(".\\vscode-latest.exe"))
+    if (isFileExists(".\\vscode-latest.exe") && !vscode_editor)
         vscode_editor_download_ok = 1;
-    if (isFileExists(".\\codeblocks-latest.exe"))
+    if (isFileExists(".\\codeblocks-latest.exe") && !codeblocks)
         codeblocks_download_ok = 1;
 
     if (vscode_editor_download_ok == 1)

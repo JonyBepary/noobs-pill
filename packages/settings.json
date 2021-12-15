@@ -10,8 +10,6 @@
   "workbench.iconTheme": "vscode-icons",
   "workbench.editor.enablePreview": false,
   "files.insertFinalNewline": true,
-  "go.toolsManagement.autoUpdate": true,
-  "go.autocompleteUnimportedPackages": true,
   "window.closeWhenEmpty": false,
   "editor.emptySelectionClipboard": false,
   "editor.dragAndDrop": false,
@@ -27,17 +25,6 @@
   "window.openFilesInNewWindow": "off",
   "window.title": "${activeEditorShort}${separator}${rootName}",
   "files.trimTrailingWhitespace": true,
-  "bracket-pair-colorizer-2.colors": ["Gold", "Orchid", "LightSkyBlue"],
-  "bracket-pair-colorizer-2.colorMode": "Independent",
-  "bracket-pair-colorizer-2.forceIterationColorCycle": true,
-  "bracket-pair-colorizer-2.showBracketsInGutter": true,
-  "bracket-pair-colorizer-2.activeScopeCSS": [
-    "borderStyle : solid",
-    "borderWidth : 1px",
-    "borderColor : {color}",
-    "opacity: 0.5"
-  ],
-  "bracket-pair-colorizer-2.highlightActiveScope": true,
   "[jsonc]": {
     "editor.defaultFormatter": "formulahendry.code-runner",
   },
@@ -51,11 +38,10 @@
   "C_Cpp.updateChannel": "Insiders",
   "files.autoSave": "afterDelay",
   // "workbench.sideBar.location": "right"
-  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
 
   "C_Cpp.autocompleteAddParentheses": true,
   "workbench.colorTheme": "Community Material Theme Darker High Contrast",
-  "dart.flutterSdkPath": "/home/jony/Flutter",
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -70,6 +56,6 @@
   },
   "cmake.configureOnOpen": true,
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "editor.bracketPairColorization.enabled": true
 }

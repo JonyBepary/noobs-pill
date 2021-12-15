@@ -91,7 +91,7 @@ void construct_download_list()
 int Download_LIST_Through_wget()
 {
 
-    if (system("wget  --content-disposition --directory-prefix=./packages -i ./packagesDL_LIST_NIX") == 0)
+    if (system("wget  --content-disposition --directory-prefix=./packages -i ./packages/DL_LIST_NIX") == 0)
     {
         printf("Download Success!!!\n");
         return 0;
@@ -228,7 +228,6 @@ void check_vscode()
 //
 void check_codeblocks()
 {
-
     /* Open the  command for reading strinu*/
     FILE *fp;
     char striny[4096];

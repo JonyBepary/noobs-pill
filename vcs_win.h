@@ -300,35 +300,25 @@ void app_exec()
         // HANDLER, OPERATION, FILE LOCATION, PARAMETER.
         // FOLDER LOCATION,SHOWCOMMAND
         ShellExecute(NULL, "runas", "\".\\vscode-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
-        clear_screen();
-        printf("Press enter key to continue....\n");
-        getchar();
+        press_Y_to_continue_exe();
     }
 
     if (codeblocks_download_ok == 1)
     {
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
-        clear_screen();
-        printf("Press enter key to continue....\n");
-        getchar();
+        press_Y_to_continue_exe();
     }
 
     if (msys2_download_ok == 1)
     {
 
         ShellExecute(NULL, "runas", "\".\\msys2-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
-        clear_screen();
-        printf("Press enter key to continue....\n");
-        getchar();
+        press_Y_to_continue_exe();
         ShellExecute(NULL, "runas", "\".\\script\\make.bat \"", NULL, NULL, SW_SHOWNORMAL);
-        clear_screen();
-        printf("Press enter key to continue....\n");
-        getchar();
+        press_Y_to_continue_script();
         ShellExecute(NULL, "runas", "\".\\script\\install.bat \"", NULL, NULL, SW_SHOWNORMAL);
-        clear_screen();
-        printf("Press enter key to continue....\n");
-        getchar();
+        press_Y_to_continue_script();
     }
 }
 void config_exec()

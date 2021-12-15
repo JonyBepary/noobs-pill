@@ -316,6 +316,7 @@ void app_exec()
     {
 
         ShellExecute(NULL, "runas", "\".\\codeblocks-latest.exe \"", NULL, NULL, SW_SHOWNORMAL);
+        check_codeblocks();
         press_Y_to_continue_exe();
     }
 
@@ -335,14 +336,14 @@ void app_exec()
         press_Y_to_continue_script();
     }
 }
-void config_exec()
-{
-    system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
-    system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
-}
-
 void vscode_plugin_exec()
 {
     printf("Installing required plugin for vscode\n");
     ShellExecute(NULL, "runas", "\".\\script\\plugin.bat \"", NULL, NULL, SW_SHOWNORMAL);
+}
+void config_exec()
+{
+    system("copy .\\packages\\settings.json  \"%APPDATA%\\Code\\User\\\"");
+    system("type nul > \"%APPDATA%\\Code\\User\\config.ok\"");
+    check_config();
 }

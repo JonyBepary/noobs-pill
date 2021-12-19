@@ -286,7 +286,7 @@ void Download_file_wget()
     if (!isFileExists(".\\msys2-latest.exe\"") && !msys2)
         system(".\\wget.exe \"https://github.com/msys2/msys2-installer/releases/download/2021-11-30/msys2-x86_64-20211130.exe \" -O msys2-latest.exe");
     if (!isFileExists(".\\vscode-latest.exe") && !vscode_editor)
-        system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user\" -O vscode-latest.exe");
+        system(".\\wget.exe \"https://code.visualstudio.com/sha/download?build=stable&os=win32-x64\" -O vscode-latest.exe");
     if (!isFileExists(".\\codeblocks-latest.exe") && !codeblocks)
         system(".\\wget.exe \"https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download\" -O codeblocks-latest.exe");
 }

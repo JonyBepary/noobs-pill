@@ -25,6 +25,7 @@ int main()
     }
     clear_screen();
     printbaner2();
-
+    getchar();
+    getchar();
     return 0;
 }

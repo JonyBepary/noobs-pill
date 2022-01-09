@@ -104,6 +104,18 @@ void check_wget()
     }
 }
 
+int isFileExists(TCHAR *PATH)
+{
+    WIN32_FIND_DATA FindFileData;
+    HANDLE handle = FindFirstFile(PATH, &FindFileData);
+    int found = handle != INVALID_HANDLE_VALUE;
+    if (found)
+    {
+        FindClose(handle);
+    }
+    return found;
+}
+
 int check_config()
 {
     char path[4096];
@@ -176,17 +188,6 @@ int print_option()
     return 1;
 }
 // string literal
-int isFileExists(TCHAR *PATH)
-{
-    WIN32_FIND_DATA FindFileData;
-    HANDLE handle = FindFirstFile(PATH, &FindFileData);
-    int found = handle != INVALID_HANDLE_VALUE;
-    if (found)
-    {
-        FindClose(handle);
-    }
-    return found;
-}
 
 void check_compiler()
 {

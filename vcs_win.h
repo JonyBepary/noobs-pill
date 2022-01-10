@@ -242,7 +242,9 @@ void press_Y_to_continue_script()
     char ch;
     while (1)
     {
-        printf("Proceed with installation....\n");
+        printf("1. Proceed with installation....\n");
+        printf("2. Accept all the permission....\n");
+        printf("3. No need to run the program....\n");
         printf("If complete enter 'Y' to continue....\n");
         ch = getchar();
         if (ch == 'Y' || ch == 'y')

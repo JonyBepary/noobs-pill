@@ -296,9 +296,16 @@ void Download_file_wget()
 
 void app_exec()
 {
+    printf("Do you download want to install codeblock?(y/N): ");
+    char coand;
+    scanf("%c", &command);
+    if (!(coand == 'y' || coand == 'Y'))
+    {
+        codeblocks = 1;
+    }
+
     Download_Wget();
     Download_file_wget();
-
     if (isFileExists(".\\msys2-latest.exe\"") && !msys2)
         msys2_download_ok = 1;
     if (isFileExists(".\\vscode-latest.exe") && !vscode_editor)
